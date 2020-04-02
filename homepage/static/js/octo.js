@@ -11,18 +11,17 @@
     let condition_Promise = new Promise((resolve, reject) => {
       if (greeting==0) {
             speech_bubble.classList.add("speech_heart")
-            let msg_pitch = getRandomInt(3)
             var msg = new SpeechSynthesisUtterance('meow meow  meow  meow');
                 msg.volume = 1
                 msg.rate = 1.5
-                msg.pitch = msg_pitch
+                msg.pitch = 2
                 msg.lang = 'de-D'
           window.speechSynthesis.speak(msg);
 
            msg = new SpeechSynthesisUtterance('Sfenjaa');
                 msg.volume = 1
                 msg.rate = 0.5
-                msg.pitch = msg_pitch
+                msg.pitch = 2
                 msg.lang = 'de-D'
           window.speechSynthesis.speak(msg);
           greeting = 2;
@@ -31,11 +30,10 @@
       }
       else if (greeting==2) {
         speech_bubble.classList.add("speech_hi")
-        let msg_pitch = getRandomInt(3)
         var msg = new SpeechSynthesisUtterance('meow meow');
             msg.volume = 1
             msg.rate = 1.5
-            msg.pitch = msg_pitch
+            msg.pitch = 2
             msg.lang = 'de-D'
         window.speechSynthesis.speak(msg);
         greeting=3
@@ -62,11 +60,10 @@
                     Aktuelles Wetter: ${data.weather[0].description}
 
                 `
-              let msg_pitch = getRandomInt(3)
               var msg = new SpeechSynthesisUtterance(text);
                     msg.volume = 1
                     msg.rate = 1.5
-                    msg.pitch = msg_pitch
+                    msg.pitch = 2
                     msg.lang = 'de-D'
               window.speechSynthesis.speak(msg);
               });

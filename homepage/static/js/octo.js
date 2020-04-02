@@ -4,7 +4,11 @@
 
 
  function smiling_cat(){
-      let speech_bubble = document.querySelector("#speech");
+    document.querySelector("#octocat").classList.remove("normal_cat")
+    document.querySelector("#octocat").classList.add("sm_cat")
+    let speech_bubble = document.querySelector("#speech");
+    let time_show_msg=0;
+    let condition_Promise = new Promise((resolve, reject) => {
       if (greeting==0) {
             speech_bubble.classList.add("speech_heart")
             let msg_pitch = getRandomInt(3)
@@ -21,9 +25,11 @@
                 msg.pitch = msg_pitch
                 msg.lang = 'de-D'
           window.speechSynthesis.speak(msg);
-          greeting = 1;
+          greeting = 2;
+
+          time_show_msg = 3000
       }
-      else {
+      else if (greeting==2) {
         speech_bubble.classList.add("speech_hi")
         let msg_pitch = getRandomInt(3)
         var msg = new SpeechSynthesisUtterance('meow meow');
@@ -32,23 +38,75 @@
             msg.pitch = msg_pitch
             msg.lang = 'de-D'
         window.speechSynthesis.speak(msg);
+        greeting=3
+        time_show_msg = 3000
+      }
+      else {
+          fetch('weather')
+              .then((response) => {
+                return response.json();
+              })
+              .then((data) => {
+                speech_bubble.classList.add("speech_empty")
+                speech_bubble.querySelector("span").innerHTML=
+                `Temp: ${Math.round(data.main.temp)} °C<br>
+                 Temp_min: ${Math.round(data.main.temp_min)} °C <br>
+                 Temp_max: ${Math.round(data.main.temp_max)} °C <br>
+                 Weather: ${data.weather[0].description} <br>
+                `
+
+              let text = `
+                    Aktuelle Temperatur ${Math.round(data.main.temp)} °
+                    Minimale Temperatur: ${Math.round(data.main.temp_min)} °
+                    Maximale Temperatur: ${Math.round(data.main.temp_max)} °
+                    Aktuelles Wetter: ${data.weather[0].description}
+
+                `
+              let msg_pitch = getRandomInt(3)
+              var msg = new SpeechSynthesisUtterance(text);
+                    msg.volume = 1
+                    msg.rate = 1.5
+                    msg.pitch = msg_pitch
+                    msg.lang = 'de-D'
+              window.speechSynthesis.speak(msg);
+              });
+              time_show_msg = 15000
+
       }
 
+    }).then(
+          setTimeout(function(){
 
-
-
-
-  document.querySelector("#octocat").classList.remove("normal_cat")
-  document.querySelector("#octocat").classList.add("sm_cat")
-  setTimeout(function(){
-
-     document.querySelector("#octocat").classList.add("normal_cat")
-     document.querySelector("#octocat").classList.remove("sm_cat")
+     document.querySelector("#octocat").classList.add("normal_cat");
+     document.querySelector("#octocat").classList.remove("sm_cat");
+     speech_bubble.querySelector("span").innerHTML="";
      speech_bubble.classList=""
 
-  }, 6000);
+  }, time_show_msg)
+
+    )
+
+
+
+
+
+
+
+
+
  }
 
  function getRandomInt(max) {
   return Math.floor(Math.random() * Math.floor(max));
 }
+
+ function get_weater(){
+
+ fetch('https://samples.openweathermap.org/data/2.5/weather?q=Eberstadt,ger&appid=b6907d289e10d714a6e88b30761fae22')
+  .then((response) => {
+    return response.json();
+  })
+  .then((data) => {
+    console.log(data);
+  });
+ }

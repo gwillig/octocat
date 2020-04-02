@@ -1,11 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d46620b7-c21a-4f2b-81e4-d289cc637db8" name="Default Changelist" comment="" />
+    <list default="true" id="d46620b7-c21a-4f2b-81e4-d289cc637db8" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/homepage/static/css/octo.css" beforeDir="false" afterPath="$PROJECT_DIR$/homepage/static/css/octo.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/homepage/static/js/octo.js" beforeDir="false" afterPath="$PROJECT_DIR$/homepage/static/js/octo.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/homepage/templates/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/homepage/templates/home.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/homepage/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/homepage/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/homepage/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/homepage/views.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1Zx6dODXyAeBH76ibpwo0PXektQ" />
   <component name="ProjectViewState">
@@ -15,6 +26,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/homepage/templates" />
   </component>
   <component name="RecentsManager">
@@ -61,10 +73,10 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="463" y="121" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1585769254213" />
-    <state x="391" y="191" key="com.intellij.ide.util.TipDialog" timestamp="1585809795414">
+    <state x="391" y="191" key="com.intellij.ide.util.TipDialog" timestamp="1585818412368">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="391" y="191" key="com.intellij.ide.util.TipDialog/0.0.1366.728@0.0.1366.728" timestamp="1585809795414" />
+    <state x="391" y="191" key="com.intellij.ide.util.TipDialog/0.0.1366.728@0.0.1366.728" timestamp="1585818412368" />
     <state x="328" y="0" width="710" height="728" key="find.popup" timestamp="1585814273670">
       <screen x="0" y="0" width="1366" height="728" />
     </state>

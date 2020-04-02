@@ -12,6 +12,36 @@ body {
     height: 500px;
     width: 700px;
 }
+
+#age{
+    font-family:Lucida Console;
+    color:white;
+    font-size:90px;
+    position: absolute;
+    bottom: 0px;
+    padding-left: 25px;
+}
+.speech_empty span{
+    top: 100px;
+    font-family:Lucida Console;
+    margin-top: 60px;
+    padding-left: 70px;
+    display: inline-block;
+    font-size: 50px;
+}
+.speech_sun{
+    background: url(/static/css/bubble_sun.png);
+    position: absolute;
+    background-repeat: no-repeat;
+    background-size: cover;
+    z-index: 1500;
+    height: 500px;
+    width: 700px;
+    font-family: Impact;
+    font-size: 100px;
+    text-align: center;
+}
+
 .speech_heart{
     background: url(/static/css/bubble_heart.png);
     position: absolute;
@@ -21,6 +51,17 @@ body {
     height: 500px;
     width: 700px;
 }
+
+.speech_empty{
+    background: url(/static/css/bubble_empty.png);
+    position: absolute;
+    background-repeat: no-repeat;
+    background-size: cover;
+    z-index: 1500;
+    height: 500px;
+    width: 700px;
+}
+
 .sm_cat {
   height: 1500px;
   width: 900px;

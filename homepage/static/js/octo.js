@@ -36,6 +36,12 @@
             msg.pitch = 2
             msg.lang = 'de-D'
         window.speechSynthesis.speak(msg);
+        var msg = new SpeechSynthesisUtterance('mein Name ist Felix');
+            msg.volume = 1
+            msg.rate = 1.0
+            msg.pitch = 2
+            msg.lang = 'de-D'
+        window.speechSynthesis.speak(msg);
         greeting=3
         time_show_msg = 3000
       }

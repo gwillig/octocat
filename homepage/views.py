@@ -18,6 +18,3 @@ def get_weather(request):
     req_json = json.loads(req_con)
     return JsonResponse(req_json)
 
-
-def reco(request):
-    return render(request,"reco.html")

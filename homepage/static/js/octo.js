@@ -3,7 +3,8 @@
  var greeting = 0;
 
 
- function smiling_cat(){
+ function smiling_cat(name_person){
+
     document.querySelector("#octocat").classList.remove("normal_cat")
     document.querySelector("#octocat").classList.add("sm_cat")
     let speech_bubble = document.querySelector("#speech");
@@ -18,7 +19,7 @@
                 msg.lang = 'de-D'
           window.speechSynthesis.speak(msg);
 
-           msg = new SpeechSynthesisUtterance('Sfenjaa');
+           msg = new SpeechSynthesisUtterance(name_person);
                 msg.volume = 1
                 msg.rate = 0.5
                 msg.pitch = 2
@@ -46,7 +47,7 @@
         time_show_msg = 3000
       }
       else {
-          fetch('weather')
+          fetch('/weather')
               .then((response) => {
                 return response.json();
               })

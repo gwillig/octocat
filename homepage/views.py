@@ -5,8 +5,9 @@ import json
 url ="https://samples.openweathermap.org/data/2.5/weather?q=Eberstadt,%20DE&appid=b6907d289e10d714a6e88b30761fae22"
 
 # ...
-def home(request ):
-    return render(request, 'home.html')
+def home(request,name_person ):
+    print(name_person)
+    return render(request, 'home.html',{"name_person":name_person})
 
 
 

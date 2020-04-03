@@ -37,7 +37,7 @@
             msg.pitch = 2
             msg.lang = 'de-D'
         window.speechSynthesis.speak(msg);
-        var msg = new SpeechSynthesisUtterance('mein Name ist Felix');
+        var msg = new SpeechSynthesisUtterance('mein Name ist Tom');
             msg.volume = 1
             msg.rate = 1.0
             msg.pitch = 2

@@ -1,6 +1,6 @@
 # Octocat
 
-Is a little online application which tells you what the current weather is. The name of the animated animal is Tom.
+Octocat is a little online application which tells you what the current weather is. The name of the animated animal is Tom.
 
 
 

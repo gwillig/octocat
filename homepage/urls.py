@@ -21,6 +21,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('home/<name_person>', views.home, name='home'),
     path('weather', views.get_weather, name='get_Weather'),
-
+    path('reco', views.reco, name='get_reco'),
 
 ]

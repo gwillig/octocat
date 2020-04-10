@@ -59,16 +59,26 @@ window.addEventListener("DOMContentLoaded",	() => {
         const transcript = e.results[0][0].transcript.toLowerCase().replace(/\s/g, ''),
               confidence = (e.results[0][0].confidence * 100).toFixed(1);
 
-        //Check if transcript is valid color value
-        if(cssColorNames.includes(transcript)) {
 
-            //Set cube color;
-            colorCube.style.setProperty('--cube-color', transcript);
+ if (transcript.include("svenja") ||transcript.include("sve") {
+            speech_bubble.classList.add("speech_heart")
+            var msg = new SpeechSynthesisUtterance('meow meow  meow  meow');
+                msg.volume = 1
+                msg.rate = 1.5
+                msg.pitch = 2
+                msg.lang = 'de-D'
+          window.speechSynthesis.speak(msg);
 
-            //Set color name text value
-            colorName.textContent = transcript;
+           msg = new SpeechSynthesisUtterance("Alles Gute zum Geburtstag");
+                msg.volume = 1
+                msg.rate = 0.5
+                msg.pitch = 2
+                msg.lang = 'de-D'
+          window.speechSynthesis.speak(msg);
+          greeting = 2;
 
-        }
+          time_show_msg = 3000
+      }
 
         //Output transcript
         heardOutput.textContent = `Heard: ${transcript}`;

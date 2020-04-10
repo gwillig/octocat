@@ -151,7 +151,13 @@ window.addEventListener("DOMContentLoaded",	() => {
                 msg.lang = 'de-D'
           window.speechSynthesis.speak(msg);
 
-
+          msg = new SpeechSynthesisUtterance("Alles Gute zum Geburtstag");
+                msg.volume = 1
+                msg.rate = 0.5
+                msg.pitch = 2
+                msg.lang = 'de-D'
+          window.speechSynthesis.speak(msg);
+          greeting = 2;
       }
 
         //Output transcript

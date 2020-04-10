@@ -10,6 +10,8 @@ def home(request,name_person ):
     return render(request, 'home.html',{"name_person":name_person})
 
 
+def reco(request):
+    return render(request, 'reco.html')
 
 def get_weather(request):
     url = 'http://api.openweathermap.org/data/2.5/weather?q=Eberstadt,ger&units=metric&lang=de&APPID=b3b25ed86b9fb6cfaac03f9b37164eef'

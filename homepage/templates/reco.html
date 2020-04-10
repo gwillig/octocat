@@ -1,0 +1,54 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<button id="record">Record</button>
+<button id="stop">Stop</button>
+<br><br>
+<section id="recordings"></section>
+</body>
+<script>
+    var recordElement = document.getElementById('record');
+var stopElement = document.getElementById('stop');
+var recordingsElement = document.getElementById('recordings');
+
+navigator.mediaDevices.getUserMedia({
+	audio: true
+}).then(function onSuccess(stream) {
+	var mediaRecorder = new MediaRecorder(stream);
+  var chunks = [];
+
+  recordElement.addEventListener('click', function onClickRecord() {
+  	mediaRecorder.start();
+  });
+
+  stopElement.addEventListener('click', function onClickStop() {
+  	mediaRecorder.stop();
+  });
+
+	mediaRecorder.addEventListener('stop', function onStop() {
+    var clipContainerElement = document.createElement('article');
+    var clipLabelElement = document.createElement('p');
+    var audioElement = document.createElement('audio');
+    audioElement.setAttribute('controls', '');
+    clipContainerElement.appendChild(audioElement);
+    clipContainerElement.appendChild(clipLabelElement);
+    recordingsElement.appendChild(clipContainerElement);
+    audioElement.controls = true;
+    var blob = new Blob(chunks, { type : 'audio/ogg; codecs=opus' });
+    chunks = [];
+    audioElement.src = window.URL.createObjectURL(blob);
+  });
+
+  mediaRecorder.addEventListener('dataavailable', function onDataAvailable(event) {
+    chunks.push(event.data);
+  });
+
+}).catch(function onError(err) {
+	console.log('The following error occured:', err);
+});
+</script>
+</html>

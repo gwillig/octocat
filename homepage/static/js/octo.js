@@ -140,7 +140,8 @@ window.addEventListener("DOMContentLoaded",	() => {
         const transcript = e.results[0][0].transcript.toLowerCase().replace(/\s/g, ''),
               confidence = (e.results[0][0].confidence * 100).toFixed(1);
 
-    if (transcript.include("svenja")) {
+        var rec_word = transcript
+    if (transcript.includes("svenja")) {
 
             var msg = new SpeechSynthesisUtterance('meow meow  meow  meow');
                 msg.volume = 1

@@ -159,8 +159,46 @@ window.addEventListener("DOMContentLoaded",	() => {
           window.speechSynthesis.speak(msg);
           greeting = 2;
       }
+    if (transcript.includes("x10")) {
+            var img_tag = document.querySelector(".present")
+            img_tag.src="/static/css/mond.jpg"
+            img_tag.style.display="block"
+            var msg = new SpeechSynthesisUtterance('meow meow  meow  meow');
+                msg.volume = 1
+                msg.rate = 1.5
+                msg.pitch = 2
+                msg.lang = 'de-D'
+          window.speechSynthesis.speak(msg);
 
+          msg = new SpeechSynthesisUtterance("Herzlichen Glückwunsch zur Kette");
+                msg.volume = 1
+                msg.rate = 0.5
+                msg.pitch = 2
+                msg.lang = 'de-D'
+          window.speechSynthesis.speak(msg);
+          greeting = 2;
+      }
+    if (transcript.includes("x11")) {
+            var img_tag = document.querySelector(".present")
+            img_tag.src="/static/css/uhr.jpg"
+            img_tag.style.display="block"
+            var msg = new SpeechSynthesisUtterance('meow meow  meow  meow');
+                msg.volume = 1
+                msg.rate = 1.5
+                msg.pitch = 2
+                msg.lang = 'de-D'
+          window.speechSynthesis.speak(msg);
+
+          msg = new SpeechSynthesisUtterance("Herzlichen Glückwunsch zur Uhr");
+                msg.volume = 1
+                msg.rate = 0.5
+                msg.pitch = 2
+                msg.lang = 'de-D'
+          window.speechSynthesis.speak(msg);
+          greeting = 2;
+      }
         //Output transcript
+
         heardOutput.textContent = `Heard: ${transcript}`;
 
         //Output transcript confidence percentage

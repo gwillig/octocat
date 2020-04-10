@@ -5,7 +5,12 @@
     position: absolute;
     bottom: 0px;
 }
+.present {
+    padding: 0;
+    display: none;
+    margin: 0 auto;
 
+}
 
 body {
   margin: 0;

@@ -141,7 +141,8 @@ window.addEventListener("DOMContentLoaded",	() => {
               confidence = (e.results[0][0].confidence * 100).toFixed(1);
 
         var rec_word = transcript
-    if (transcript.includes("svenja")) {
+        var conditions =["svenja","sv"]
+    if (conditions.some(el => str1.includes(el))) {
 
             var msg = new SpeechSynthesisUtterance('meow meow  meow  meow');
                 msg.volume = 1
@@ -150,14 +151,7 @@ window.addEventListener("DOMContentLoaded",	() => {
                 msg.lang = 'de-D'
           window.speechSynthesis.speak(msg);
 
-           msg = new SpeechSynthesisUtterance("Alles Gute zum Geburtstag");
-                msg.volume = 1
-                msg.rate = 0.5
-                msg.pitch = 2
-                msg.lang = 'de-D'
-          window.speechSynthesis.speak(msg);
 
-          time_show_msg = 3000
       }
 
         //Output transcript

@@ -140,7 +140,7 @@ window.addEventListener("DOMContentLoaded",	() => {
         const transcript = e.results[0][0].transcript.toLowerCase().replace(/\s/g, ''),
               confidence = (e.results[0][0].confidence * 100).toFixed(1);
 
-    if (transcript.include("svenja") || transcript.include("X10")  ) {
+    if (transcript.include("svenja")) {
 
             var msg = new SpeechSynthesisUtterance('meow meow  meow  meow');
                 msg.volume = 1
@@ -155,7 +155,6 @@ window.addEventListener("DOMContentLoaded",	() => {
                 msg.pitch = 2
                 msg.lang = 'de-D'
           window.speechSynthesis.speak(msg);
-          greeting = 2;
 
           time_show_msg = 3000
       }

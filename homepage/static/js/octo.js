@@ -142,7 +142,7 @@ window.addEventListener("DOMContentLoaded",	() => {
 
         var rec_word = transcript
         var conditions =["svenja","sv"]
-    if (conditions.some(el => str1.includes(el))) {
+    if (conditions.some(el => transcript.includes(el))) {
 
             var msg = new SpeechSynthesisUtterance('meow meow  meow  meow');
                 msg.volume = 1

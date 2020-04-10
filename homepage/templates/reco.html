@@ -139,7 +139,7 @@ window.addEventListener("DOMContentLoaded",	() => {
 
     //Set speech recognition
     window.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-
+    window.SpeechRecognition.lang =" de-DE"
     const recognition = new SpeechRecognition(),
           colorName = document.querySelector('.color-name'),
           colorCube = document.querySelector('.color-cube'),

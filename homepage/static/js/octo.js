@@ -269,3 +269,4 @@ function speech_reco(){
 
 });
 }
+speech_reco()

@@ -30,78 +30,7 @@ h1 {
     margin-bottom: 50px;
 }
 
-.color-cube {
-    --cube-color: orange;
-    position: relative;
-    width: 140px;
-    height: 140px;
-    transform-style: preserve-3d;
-    transform: rotateX(-20deg) rotateY(-40deg);
-    animation: rotateCube 5s linear infinite;
-}
 
-.cube-face {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    border: 2px solid rgba(0, 0, 0, 0.4);
-    background-color: var(--cube-color);
-    transition: background-color 500ms;
-}
-
-.cube-front {
-    transform: translateZ(70px);
-}
-
-.cube-back {
-    transform: rotateY(180deg) translateZ(70px);
-}
-
-.cube-bottom {
-    transform: rotateX(-90deg) translateZ(70px);
-}
-
-.cube-top {
-    transform: rotateX(90deg) translateZ(70px);
-}
-
-.cube-left {
-    transform: rotateY(-90deg) translateZ(70px);
-}
-
-.cube-right {
-    transform: rotateY(90deg) translateZ(70px);
-}
-
-.color-name {
-    font-size: 40px;
-    font-weight: 500;
-    margin: 55px 0 30px;
-}
-
-.heard-output,
-.confidence-output {
-    font-size: 22px;
-    font-weight: 400;
-    margin-bottom: 18px;
-}
-
-.colors-list {
-    font-size: 20px;
-    font-weight: 700;
-    color: #111;
-    text-decoration: none;
-    border-bottom: 2px solid #111;
-    margin-top: 10px;
-}
-
-@keyframes rotateCube {
-    to {
-        transform: rotateX(-20deg) rotateY(-400deg);
-    }
-}
 </style>
 <body>
 <!--
@@ -112,30 +41,19 @@ Please close any other tabs/windows containing speech API projects, even if only
 
 -->
 
-<h1>Say Color:</h1>
 
-<div class="color-cube">
-    <div class="cube-face cube-front"></div>
-    <div class="cube-face cube-back"></div>
-    <div class="cube-face cube-bottom"></div>
-    <div class="cube-face cube-top"></div>
-    <div class="cube-face cube-left"></div>
-    <div class="cube-face cube-right"></div>
-</div>
 
-<p class="color-name">orange</p>
 
 <p class="heard-output">Heard: orange</p>
 
 <p class="confidence-output">Confidence: 100.0%</p>
 
-<a class="colors-list" href="https://htmlcolorcodes.com/color-names/#names" target="_blank">List of colors</a>
 </body>
-<<script>
-    //DOM load event
+<script>
+    //DOM load event+9
 window.addEventListener("DOMContentLoaded",	() => {
 
-    //Check that page is not running in a CodePen preview iframe
+
 
     //Set speech recognition
     window.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
@@ -157,16 +75,7 @@ window.addEventListener("DOMContentLoaded",	() => {
         const transcript = e.results[0][0].transcript.toLowerCase().replace(/\s/g, ''),
               confidence = (e.results[0][0].confidence * 100).toFixed(1);
 
-        //Check if transcript is valid color value
-        if(cssColorNames.includes(transcript)) {
-
-            //Set cube color;
-            colorCube.style.setProperty('--cube-color', transcript);
-
-            //Set color name text value
-            colorName.textContent = transcript;
-
-        }
+        colorName.textContent = transcript;
 
         //Output transcript
         heardOutput.textContent = `Heard: ${transcript}`;
@@ -180,5 +89,48 @@ window.addEventListener("DOMContentLoaded",	() => {
     recognition.addEventListener('end', recognition.start);
 
 });
-</script>>
+</script>
+<script>
+
+     //=======Just for the birthday!
+ window.addEventListener("DOMContentLoaded",	() => {
+
+
+
+    //Set speech recognition
+    window.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+    window.SpeechRecognition.lang =" de-DE"
+    const recognition = new SpeechRecognition(),
+          colorName = document.querySelector('.color-name'),
+          colorCube = document.querySelector('.color-cube'),
+          heardOutput = document.querySelector('.heard-output'),
+          confidenceOutput = document.querySelector('.confidence-output'),
+          cssColorNames = ["aliceblue", "antiquewhite", "aqua", "aquamarine", "azure", "beige", "bisque", "black", "blanchedalmond", "blue", "blueviolet", "brown", "burlywood", "cadetblue", "chartreuse", "chocolate", "coral", "cornflowerblue", "cornsilk", "crimson", "cyan", "darkblue", "darkcyan", "darkgoldenrod", "darkgray", "darkgrey", "darkgreen", "darkkhaki", "darkmagenta", "darkolivegreen", "darkorange", "darkorchid", "darkred", "darksalmon", "darkseagreen", "darkslateblue", "darkslategray", "darkslategrey", "darkturquoise", "darkviolet", "deeppink", "deepskyblue", "dimgray", "dimgrey", "dodgerblue", "firebrick", "floralwhite", "forestgreen", "fuchsia", "gainsboro", "ghostwhite", "gold", "goldenrod", "gray", "grey", "green", "greenyellow", "honeydew", "hotpink", "indianred", "indigo", "ivory", "khaki", "lavender", "lavenderblush", "lawngreen", "lemonchiffon", "lightblue", "lightcoral", "lightcyan", "lightgoldenrodyellow", "lightgray", "lightgrey", "lightgreen", "lightpink", "lightsalmon", "lightseagreen", "lightskyblue", "lightslategray", "lightslategrey", "lightsteelblue", "lightyellow", "lime", "limegreen", "linen", "magenta", "maroon", "mediumaquamarine", "mediumblue", "mediumorchid", "mediumpurple", "mediumseagreen", "mediumslateblue", "mediumspringgreen", "mediumturquoise", "mediumvioletred", "midnightblue", "mintcream", "mistyrose", "moccasin", "navajowhite", "navy", "oldlace", "olive", "olivedrab", "orange", "orangered", "orchid", "palegoldenrod", "palegreen", "paleturquoise", "palevioletred", "papayawhip", "peachpuff", "peru", "pink", "plum", "powderblue", "purple", "rebeccapurple", "red", "rosybrown", "royalblue", "saddlebrown", "salmon", "sandybrown", "seagreen", "seashell", "sienna", "silver", "skyblue", "slateblue", "slategray", "slategrey", "snow", "springgreen", "steelblue", "tan", "teal", "thistle", "tomato", "transparent", "turquoise", "violet", "wheat", "white", "whitesmoke", "yellow", "yellowgreen"];
+
+    //Start speech recognition
+    recognition.start();
+
+    //Listen for when the user finishes talking
+    recognition.addEventListener('result', e => {
+
+        //Get transcript of user speech & confidence percentage
+        const transcript = e.results[0][0].transcript.toLowerCase().replace(/\s/g, ''),
+              confidence = (e.results[0][0].confidence * 100).toFixed(1);
+
+        colorName.textContent = transcript;
+
+        //Output transcript
+        heardOutput.textContent = `Heard: ${transcript}`;
+
+        //Output transcript confidence percentage
+        confidenceOutput.textContent = `Confidence: ${confidence}%`;
+
+    });
+
+    //Restart speech recognition after user has finished talking
+    recognition.addEventListener('end', recognition.start);
+
+});
+
+</script>
 </html>

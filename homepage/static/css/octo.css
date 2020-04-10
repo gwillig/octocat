@@ -1,4 +1,12 @@
 
+.speech_reco{
+    color:white;
+    font-size:5em;
+    position: absolute;
+    bottom: 0px;
+}
+
+
 body {
   margin: 0;
   overflow: hidden;

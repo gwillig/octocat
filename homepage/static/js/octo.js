@@ -2,6 +2,23 @@
 // Greeting is a global varible and ensure that the greeting only happen once
  var greeting = 0;
 
+function speak_msg(msg_to_speak){
+   /*
+   let the cat say some words
+   */
+    var msg = new SpeechSynthesisUtterance('meow meow');
+        msg.volume = 1
+        msg.rate = 1.5
+        msg.pitch = 2
+        msg.lang = 'de-D'
+        window.speechSynthesis.speak(msg);
+    var msg = new SpeechSynthesisUtterance(msg_to_speak);
+        msg.volume = 1
+        msg.rate = 1.0
+        msg.pitch = 2
+        msg.lang = 'de-D'
+    window.speechSynthesis.speak(msg);
+}
 
 function greeting_visitor(){
     /*

@@ -82,8 +82,8 @@ window.addEventListener("DOMContentLoaded",	() => {
         if(cssColorNames.includes(transcript)) {
 
             //Set cube color;
-            colorCube.style.setProperty('--cube-color', transcript);
 
+            document.querySelector("body").style.backgroundColor=  transcript
             //Set color name text value
             colorName.textContent = transcript;
 

@@ -20,3 +20,6 @@ def get_weather(request):
     req_json = json.loads(req_con)
     return JsonResponse(req_json)
 
+
+def personal_information(request):
+    pass

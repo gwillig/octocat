@@ -547,19 +547,29 @@ function speech_recog(function_output){
 
     //Listen for when the user finishes talking
     let transcript,confidence
-    return recognition.addEventListener('result', e => {
+   recognition.addEventListener('result', e => {
 
-        //Get transcript of user speech & confidence percentage
-         transcript = e.results[0][0].transcript.toLowerCase()
-         confidence = (e.results[0][0].confidence * 100).toFixed(1);
+    //Get transcript of user speech & confidence percentage
+     transcript = e.results[0][0].transcript.toLowerCase()
+     confidence = (e.results[0][0].confidence * 100).toFixed(1);
 
-         // Shows the reco words and confidence percentage on the screen
-        heardOutput.textContent = `Heard: ${transcript}`;
-        confidenceOutput.textContent = `Confidence: ${confidence}%`;
+     // Shows the reco words and confidence percentage on the screen
+    heardOutput.textContent = `Heard: ${transcript}`;
+    confidenceOutput.textContent = `Confidence: ${confidence}%`;
+
+    })
+    recognition.addEventListener('end', recognition.start);
+//    recognition.addEventListener('end', .startrecognition);
+    var refreshId = setInterval(function() {
+      console.log(1)
+      recognition.addEventListener('end', recognition.start);
+      if (transcript!=null) {
+        recognition.removeEventListener('end', recognition.start);
+        clearInterval(refreshId);
         function_output(transcript);
 
-
-        })
+      }
+    }, 1000);
 
 
 

@@ -45,7 +45,7 @@ function greeting_visitor(){
             msg.lang = 'de-D'
         window.speechSynthesis.speak(msg);
         greeting=3
-        time_show_msg = 6000
+        time_show_msg = 2000
 
       }
       else {

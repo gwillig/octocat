@@ -102,7 +102,9 @@ function say_name_visitor(reco_msg){
         name_person = msg_array[0]
       }
     //2.Step: Check if person is known
-    if(name_person.includes("svenja","gustav"))
+
+    var conditions =["svenja","sv",person_name]
+    if(conditions.some(el => name_person.includes(el)))
     {
           speech_bubble.classList.add("speech_heart")
             var msg = new SpeechSynthesisUtterance('meow meow  meow  meow');

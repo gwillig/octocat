@@ -11,6 +11,25 @@
     margin: 0 auto;
 
 }
+.learning {
+    border: none;
+    width: 200px;
+    height: 200px;
+    margin-top: 70px;
+    margin-left: 60px;
+    background: #a6b7cc;
+    border-radius: 40px;
+    transition-duration: 0.4s;
+}
+
+.learning:hover  {
+!important;
+ background: #000000;
+}
+
+.learning img {
+ width: 100%;
+}
 
 body {
   margin: 0;

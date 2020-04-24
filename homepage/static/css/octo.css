@@ -22,10 +22,7 @@
     transition-duration: 0.4s;
 }
 
-.learning:hover  {
-!important;
- background: #000000;
-}
+
 
 .learning img {
  width: 100%;

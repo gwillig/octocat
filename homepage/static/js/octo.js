@@ -559,7 +559,6 @@ function speech_recog(function_output){
 
     })
     recognition.addEventListener('end', recognition.start);
-//    recognition.addEventListener('end', .startrecognition);
     var refreshId = setInterval(function() {
       console.log(1)
       recognition.addEventListener('end', recognition.start);

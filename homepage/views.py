@@ -13,6 +13,8 @@ def home(request,name_person ):
 def reco(request):
     return render(request, 'reco.html')
 
+def audio(request):
+    return render(request,'record_audio.html')
 def get_weather(request):
     url = 'http://api.openweathermap.org/data/2.5/weather?q=Eberstadt,ger&units=metric&lang=de&APPID=b3b25ed86b9fb6cfaac03f9b37164eef'
     req = urllib.request.urlopen(url)

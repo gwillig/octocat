@@ -2,8 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d46620b7-c21a-4f2b-81e4-d289cc637db8" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/homepage/static/js/audio.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/homepage/templates/record_audio.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/homepage/static/js/octo.js" beforeDir="false" afterPath="$PROJECT_DIR$/homepage/static/js/octo.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/audio_classifer/bayes.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/audio_classifer/bayes.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/homepage/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/homepage/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/homepage/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/homepage/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,7 +34,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../front2/Deep Learning v7.0.0/Part 04-Module 01-Lesson 01_Convolutional Neural Networks" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
@@ -44,7 +48,7 @@
       <recent name="C:\projects\octocat\homepage" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Python.manage">
     <configuration name="apps" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="octocat" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -66,8 +70,30 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="manage" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="octocat" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/manage.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.manage" />
         <item itemvalue="Python.apps" />
       </list>
     </recent_temporary>
@@ -98,22 +124,26 @@
     <state x="698" y="215" width="424" height="484" key="FileChooserDialogImpl/67.27.1533.873/1600.61.1280.720@67.27.1533.873" timestamp="1586500104727" />
     <state x="2391" y="309" key="FileChooserDialogImpl/67.27.1533.873/1600.76.1920.1080@1600.76.1920.1080" timestamp="1587628745123" />
     <state x="699" y="215" width="868" height="324" key="FileChooserDialogImpl/67.27.1533.873/1600.76.1920.1080@67.27.1533.873" timestamp="1587892885326" />
-    <state width="1510" height="219" key="GridCell.Tab.0.bottom" timestamp="1587554892707">
-      <screen x="67" y="27" width="1533" height="873" />
+    <state width="1897" height="278" key="GridCell.Tab.0.bottom" timestamp="1591533001373">
+      <screen x="1920" y="0" width="1920" height="1080" />
     </state>
     <state width="1510" height="219" key="GridCell.Tab.0.bottom/67.27.1533.873/1600.76.1920.1080@67.27.1533.873" timestamp="1587554892707" />
-    <state width="1510" height="219" key="GridCell.Tab.0.center" timestamp="1587554892707">
-      <screen x="67" y="27" width="1533" height="873" />
+    <state width="1897" height="278" key="GridCell.Tab.0.bottom/67.27.1853.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1591533001373" />
+    <state width="1897" height="278" key="GridCell.Tab.0.center" timestamp="1591533001373">
+      <screen x="1920" y="0" width="1920" height="1080" />
     </state>
     <state width="1510" height="219" key="GridCell.Tab.0.center/67.27.1533.873/1600.76.1920.1080@67.27.1533.873" timestamp="1587554892707" />
-    <state width="1510" height="219" key="GridCell.Tab.0.left" timestamp="1587554892706">
-      <screen x="67" y="27" width="1533" height="873" />
+    <state width="1897" height="278" key="GridCell.Tab.0.center/67.27.1853.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1591533001373" />
+    <state width="1897" height="278" key="GridCell.Tab.0.left" timestamp="1591533001372">
+      <screen x="1920" y="0" width="1920" height="1080" />
     </state>
     <state width="1510" height="219" key="GridCell.Tab.0.left/67.27.1533.873/1600.76.1920.1080@67.27.1533.873" timestamp="1587554892706" />
-    <state width="1510" height="219" key="GridCell.Tab.0.right" timestamp="1587554892707">
-      <screen x="67" y="27" width="1533" height="873" />
+    <state width="1897" height="278" key="GridCell.Tab.0.left/67.27.1853.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1591533001372" />
+    <state width="1897" height="278" key="GridCell.Tab.0.right" timestamp="1591533001373">
+      <screen x="1920" y="0" width="1920" height="1080" />
     </state>
     <state width="1510" height="219" key="GridCell.Tab.0.right/67.27.1533.873/1600.76.1920.1080@67.27.1533.873" timestamp="1587554892707" />
+    <state width="1897" height="278" key="GridCell.Tab.0.right/67.27.1853.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1591533001373" />
     <state x="322" y="97" key="SettingsEditor" timestamp="1586545076162">
       <screen x="67" y="27" width="1533" height="873" />
     </state>

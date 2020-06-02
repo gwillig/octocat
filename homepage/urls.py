@@ -22,5 +22,6 @@ urlpatterns = [
     path('home/<name_person>', views.home, name='home'),
     path('weather', views.get_weather, name='get_Weather'),
     path('reco', views.reco, name='get_reco'),
+    path('audio', views.audio, name='get_reco'),
 
 ]

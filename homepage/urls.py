@@ -23,5 +23,6 @@ urlpatterns = [
     path('weather', views.get_weather, name='get_Weather'),
     path('reco', views.reco, name='get_reco'),
     path('audio', views.audio, name='get_reco'),
+    path('recorded_audio', views.recorded_audio, name='get_reco'),
 
 ]

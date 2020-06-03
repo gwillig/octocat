@@ -21,3 +21,23 @@ navigator.mediaDevices.getUserMedia({ audio: true})
       mediaRecorder.stop();
     }, 3000);
   });
+//###########################
+
+fetch("/recorded_audio",{
+mode: "cors",
+method: "post",
+body: temp1,
+headers: {
+    'Content-Type': 'application/x-www-form-urlencoded'
+  },})
+      .then(function(response){
+                //Check status code
+                if(response.ok==false){
+                    //
+                    return response.text()
+                }
+                else{
+
+                   return "Items successfuly posted to database"
+                }
+            })

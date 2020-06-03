@@ -132,11 +132,13 @@ footer {
                 if (typeof event.data === 'undefined') return;
                 if (event.data.size === 0) return;
                 chunks.push(event.data);
+
               });
               recorder.addEventListener('stop', () => {
                 const recording = new Blob(chunks, {
                   type: mimeType
                 });
+                console.log(recording)
                 renderRecording(recording, list);
                 chunks = [];
               });
@@ -201,5 +203,27 @@ footer {
         list.appendChild(li);
       }
     </script>
+  <script>
+    fetch("/recorded_audio",{
+      mode: "cors",
+      method: "post",
+      headers:{
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+      "audio": temp0,
+    })    .then(function(response){
+                //Check status code
+                if(response.ok==false){
+                    //
+                    return response.text()
+                }
+                else{
+
+                   return "Items successfuly posted to database"
+                }
+            })
+  </script>
   </body>
 </html>

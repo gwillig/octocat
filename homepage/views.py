@@ -3,11 +3,19 @@ from django.shortcuts import render
 import urllib.request
 import json
 import wave
+import homepage.models
 from django.views.decorators.csrf import csrf_exempt
 from django.utils.decorators import method_decorator
 url ="https://samples.openweathermap.org/data/2.5/weather?q=Eberstadt,%20DE&appid=b6907d289e10d714a6e88b30761fae22"
 
 # ...
+
+def test():
+    a =  homepage.models.Person(name="Svenja", favorite_movie="mr", challenge_question="ttest", world_question="test")
+    a.save()
+    homepage.models.Person.objects.all()
+
+
 def home(request,name_person ):
     print(name_person)
     return render(request, 'home.html',{"name_person":name_person})

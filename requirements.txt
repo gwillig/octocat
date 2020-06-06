@@ -13,5 +13,5 @@ scikit-learn==0.23.1
 numpy==1.18.5
 pandas==1.0.4
 librosa==0.7.2
-SoundFile==0.10.3.post1
+SoundFile
 scikits.audiolab==0.11.0

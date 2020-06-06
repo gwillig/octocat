@@ -66,7 +66,6 @@ function post_data_db(self){
             const recording = new Blob(chunks, {
               type: mimeType
             });
-            console.log(recording)
             renderRecording(recording, list);
             chunks = [];
           });
@@ -105,7 +104,17 @@ function MicroError(message) {
     main.innerHTML = `<div class="error"><p>${message}</p></div>`;
     }
 
-  function renderRecording(blob, list) {
+function create_audio_tag(blob){
+  /*
+  @description:
+    Create an audio tag based on a blob
+  @args:
+    blob(Blob)
+  */
+    //1.Step: Create the URL source for the audio tag
+    const blobUrl = URL.createObjectURL(blob);
+  }
+function renderRecording(blob, list) {
     const blobUrl = URL.createObjectURL(blob);
     const li = document.createElement('li');
     const audio = document.createElement('audio');

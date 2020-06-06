@@ -5,7 +5,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Web Recorder</title>
+    <title>Memory</title>
     <link rel="stylesheet" href="./web-recorder-style.css" />
   </head>
   <style>
@@ -89,11 +89,19 @@ footer {
   border-top: 1px solid #0d122b;
   text-align: center;
 }
+<!--==================================-->
+
+.tg  {border-collapse:collapse;border-spacing:0;}
+.tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+  overflow:hidden;padding:10px 5px;word-break:normal;}
+.tg th{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+  font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
+.tg .tg-0pky{border-color:inherit;text-align:left;vertical-align:top}
 
   </style>
   <body>
     <header>
-      <h1>Web Recorder</h1>
+      <h1>Memory</h1>
     </header>
     <main>
       <div class="controls">
@@ -103,7 +111,37 @@ footer {
       </div>
        <input  id="ground_truth" type="text">
       <ul id="recordings"></ul>
-
+      <h1>Existing Memories</h1>
+      <table class="tg">
+      <thead>
+        <tr>
+          <th class="tg-9rbh">ID</th>
+          <th class="tg-9rbh">Ground Truth</th>
+          <th class="tg-9rbh">Audio</th>
+          <th class="tg-9rbh">X</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="tg-0pky"></td>
+          <td class="tg-0pky"></td>
+          <td class="tg-0pky"></td>
+          <td class="tg-0pky"></td>
+        </tr>
+        <tr>
+          <td class="tg-0pky"></td>
+          <td class="tg-0pky"></td>
+          <td class="tg-0pky"></td>
+          <td class="tg-0pky"></td>
+        </tr>
+        <tr>
+          <td class="tg-0pky"></td>
+          <td class="tg-0pky"></td>
+          <td class="tg-0pky"></td>
+          <td class="tg-0pky"></td>
+        </tr>
+      </tbody>
+      </table>
     </main>
    <script>
 

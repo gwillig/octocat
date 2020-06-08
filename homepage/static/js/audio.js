@@ -10,7 +10,7 @@ navigator.mediaDevices.getUserMedia({ audio: true})
     });
 
     mediaRecorder.addEventListener("stop", () => {
-       audioBlob = new Blob(audioChunks, { 'type' : 'audio/wav; codecs=MS_PCM' });
+       audioBlob = new Blob(audioChunks, { 'type' : 'audio/wav; codecs=0' });
        audioUrl = URL.createObjectURL(audioBlob);
        audio = new Audio(audioUrl);
       audio.download = 'acetest.wav';

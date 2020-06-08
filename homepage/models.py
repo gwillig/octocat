@@ -13,8 +13,9 @@ class Person(models.Model):
         return (self.first_name)
 
 class Memory(models.Model):
+
     id = models.AutoField(primary_key=True)
-    blob_data = models.BinaryField(null=True, editable=True)
+    blob_data = models.BinaryField(blank=True, null=True)
     ground_truth = models.CharField(max_length=30)
 
     def __str__(self):

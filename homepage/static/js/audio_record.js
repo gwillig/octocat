@@ -8,6 +8,37 @@ function delete_current_row(self_row){
     //1.Step: Set outherHTML to none
     self_row.parentElement.outerHTML="";
     }
+
+function classify_audio(self){
+    //1.Step: Get the parent element
+    let parent = self.closest("li")
+    //2.Step: Get the url blob
+    let blob_url = parent.querySelector("a").href;
+    //3.Step: Query data from url
+    let blob = fetch(blob_url).then(r =>r.blob()).then(blobFile=>{
+            //3.1.Step: Send blob data to db
+            fetch("/classify_audio",{
+            mode: "cors",
+            method: "post",
+            body: blobFile,
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+              },})
+                  .then(function(response){
+                            //Check status code
+                            if(response.ok==false){
+                                //
+                                return response.text()
+                            }
+                            else{
+
+                               console.log(response.text())
+                            }
+                  })
+        }
+    );
+};
+
 function post_data_db(self){
     //1.Step: Get the parent element
     let parent = self.closest("li")
@@ -59,6 +90,7 @@ function post_data_db(self){
           recorder.addEventListener('dataavailable', event => {
             if (typeof event.data === 'undefined') return;
             if (event.data.size === 0) return;
+            console.log(event.data)
             chunks.push(event.data);
 
           });
@@ -66,6 +98,7 @@ function post_data_db(self){
             const recording = new Blob(chunks, {
               type: mimeType
             });
+            console.log(recording)
             renderRecording(recording, list);
             chunks = [];
           });
@@ -104,7 +137,7 @@ function MicroError(message) {
     main.innerHTML = `<div class="error"><p>${message}</p></div>`;
     }
 
-function create_audio_tag(blob){
+function create_audio_tag(self,blob){
   /*
   @description:
     Create an audio tag based on a blob
@@ -113,6 +146,7 @@ function create_audio_tag(blob){
   */
     //1.Step: Create the URL source for the audio tag
     const blobUrl = URL.createObjectURL(blob);
+    self.setAttribute('src', blobUrl);
   }
 function renderRecording(blob, list) {
     const blobUrl = URL.createObjectURL(blob);
@@ -120,6 +154,7 @@ function renderRecording(blob, list) {
     const audio = document.createElement('audio');
     const anchor = document.createElement('a');
     const fetch_btn = document.createElement('button');
+    const classify_audio_btn = document.createElement('button');
     const ground_truth = document.createElement('input');
     ground_truth.classList.add("ground_truth")
     const blob_data = document.createElement('p');
@@ -130,31 +165,16 @@ function renderRecording(blob, list) {
     ground_truth.value= document.querySelector("#ground_truth").value;
     fetch_btn.innerText="Post db";
     fetch_btn.onclick = function() { post_data_db(this) };
+    classify_audio_btn.innerText="Predict";
+    classify_audio_btn.onclick = function() { classify_audio(this) };
     anchor.setAttribute('href', blobUrl);
     const now = new Date();
-    anchor.setAttribute(
-      'download',
-      `recording-${now.getFullYear()}-${(now.getMonth() + 1)
-        .toString()
-        .padStart(2, '0')}-${now
-        .getDay()
-        .toString()
-        .padStart(2, '0')}--${now
-        .getHours()
-        .toString()
-        .padStart(2, '0')}-${now
-        .getMinutes()
-        .toString()
-        .padStart(2, '0')}-${now
-        .getSeconds()
-        .toString()
-        .padStart(2, '0')}.wav`
-    );
-    anchor.innerText = 'Download';
+
     audio.setAttribute('src', blobUrl);
     audio.setAttribute('controls', 'controls');
     li.appendChild(audio);
     li.appendChild(fetch_btn);
+    li.appendChild(classify_audio_btn);
     li.appendChild(ground_truth);
     li.appendChild(delete_p);
     li.appendChild(anchor);

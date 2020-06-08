@@ -99,6 +99,7 @@ footer {
 .tg .tg-0pky{border-color:inherit;text-align:left;vertical-align:top}
 
   </style>
+    <script src="{% static 'js/audio_record.js' %}"></script>
   <body>
     <header>
       <h1>Memory</h1>
@@ -143,12 +144,15 @@ footer {
       </tbody>
       </table>
     </main>
-   <script>
 
+   <script>
+<!--    {% for el in all_memories_list %}-->
+<!--      console.log(URL.createObjectURL("{{el.blob_data}}"))-->
+<!--    {% endfor %}-->
   </script>
     <script>
 
     </script>
-  <script src="{% static 'js/audio_record.js' %}"></script>
+
   </body>
 </html>

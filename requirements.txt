@@ -105,7 +105,6 @@ keyring==21.1.0
 kiwisolver==1.1.0
 lazy-object-proxy==1.4.3
 libarchive-c==2.8
-librosa==0.7.2
 lief==0.9.0
 llvmlite==0.31.0
 locket==0.2.0
@@ -198,7 +197,7 @@ rope==0.16.0
 Rtree==0.9.3
 ruamel-yaml==0.15.87
 scikit-image==0.16.2
-scikit-learn==0.22.2.post1
+
 scipy==1.4.1
 seaborn==0.10.0
 SecretStorage==3.1.2

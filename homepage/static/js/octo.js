@@ -1,8 +1,12 @@
 
 // Greeting is a global varible and ensure that the greeting only happen once
  var greeting = 0;
+function forwarding_learning(){
 
-function speak_msg(msg_to_speak){
+    let new_address = window.location.href.split("/home")[0]+"/audio"
+    window.location.href = new_address;
+}
+function speak_msg(msg_to_speak,callback){
    /*
    let the cat say some words
    */
@@ -18,6 +22,7 @@ function speak_msg(msg_to_speak){
         msg.pitch = 2
         msg.lang = 'de-D'
     window.speechSynthesis.speak(msg);
+    callback();
 }
 
 function greeting_visitor(){

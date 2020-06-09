@@ -1,3 +1,19 @@
+function show_predictions(data_array){
+    /*
+    Functions show the prediction for each value
+    */
+    //1.Step: find div_prediction
+    let div_prediction = document.querySelector("#predictions ol");
+    //2.Step: Delete old prediciton
+    div_prediction.innerHTML = "";
+    for(let key in data_array){
+        let li_tag = document.createElement("li");
+        li_tag.innerText = `${key}: ${data_array[key]}`;
+        div_prediction.appendChild(li_tag)
+
+    }
+}
+
 function delete_current_row(self_row){
     /*
     @description:
@@ -32,9 +48,12 @@ function classify_audio(self){
                             }
                             else{
 
-                               console.log(response.text())
+                               return response.json()
                             }
-                  })
+                  }).then((data) => {
+                        show_predictions(data["prediction"])
+
+                    });
         }
     );
 };

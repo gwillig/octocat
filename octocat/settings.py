@@ -73,13 +73,31 @@ WSGI_APPLICATION = 'octocat.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
+'# Check if app runs on local computer:'
+import os
+os.system('hostnamectl > tmp')
+with open('tmp', 'r') as temp_var:
+    content_tmp = temp_var.read()
+    '#"fv-az99" is the name of the computer in the azure pipeline'
+    if "gwillig" in content_tmp or "fv-az" in content_tmp:
+        DATABASES = {
+            'default': {
+                'ENGINE': 'django.db.backends.sqlite3',
+                'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+            }
+        }
+    else:
+        DATABASES = {
+            "default": {
+                "ENGINE": "django.db.backends.postgresql_psycopg2",
+                "NAME": "dddf4diatb8ria",
+                "USER": "rqlxgctovxygmy",
+                "PASSWORD": "28b94b0441ee8a8a4ebef08a1f9439702b3c6b74767bfbefeb60203547b10ee1",
+                "HOST": "ec2-52-71-231-180.compute-1.amazonaws.com",
+                "PORT": "5432",
+            }
+        }
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
-}
 
 
 # Password validation

@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="./web-recorder-style.css" />
   </head>
   <style>
-    * {
+    {
   box-sizing: border-box;
 }
 html,
@@ -26,6 +26,11 @@ body {
   padding-left: 1em;
   padding-right: 1em;
 }
+
+li{
+  text-align: left;
+}
+
 h1 {
   text-align: center;
   font-weight: 100;
@@ -112,43 +117,33 @@ footer {
       </div>
        <input  id="ground_truth" type="text">
       <ul id="recordings"></ul>
+      <div id="predictions">
+        <h1>Prediction</h1>
+        <ol></ol>
+      </div>
       <h1>Existing Memories</h1>
       <table class="tg">
       <thead>
         <tr>
-          <th class="tg-9rbh">ID</th>
           <th class="tg-9rbh">Ground Truth</th>
-          <th class="tg-9rbh">Audio</th>
-          <th class="tg-9rbh">X</th>
+          <th class="tg-9rbh">Count</th>
         </tr>
       </thead>
       <tbody>
+      {% for el in all_memories_list %}
         <tr>
-          <td class="tg-0pky"></td>
-          <td class="tg-0pky"></td>
-          <td class="tg-0pky"></td>
-          <td class="tg-0pky"></td>
+          <td class="tg-0pky">{{el.ground_truth}}</td>
+          <td class="tg-0pky">{{el.count}}</td>
+
         </tr>
-        <tr>
-          <td class="tg-0pky"></td>
-          <td class="tg-0pky"></td>
-          <td class="tg-0pky"></td>
-          <td class="tg-0pky"></td>
-        </tr>
-        <tr>
-          <td class="tg-0pky"></td>
-          <td class="tg-0pky"></td>
-          <td class="tg-0pky"></td>
-          <td class="tg-0pky"></td>
-        </tr>
+      {% endfor %}
       </tbody>
       </table>
     </main>
 
    <script>
-<!--    {% for el in all_memories_list %}-->
-<!--      console.log(URL.createObjectURL("{{el.blob_data}}"))-->
-<!--    {% endfor %}-->
+
+
   </script>
     <script>
 

@@ -73,11 +73,22 @@ WSGI_APPLICATION = 'octocat.wsgi.application'
 
 # Database
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
-}
+            "default": {
+                "ENGINE": "django.db.backends.postgresql_psycopg2",
+                "NAME": "dddf4diatb8ria",
+                "USER": "rqlxgctovxygmy",
+                "PASSWORD": "28b94b0441ee8a8a4ebef08a1f9439702b3c6b74767bfbefeb60203547b10ee1",
+                "HOST": "ec2-52-71-231-180.compute-1.amazonaws.com",
+                "PORT": "5432",
+            }
+        }
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#     }
+# }
 
 # # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 # '# Check if app runs on local computer:'

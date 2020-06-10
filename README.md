@@ -9,7 +9,7 @@ Octocat is a little online application which tells you what the current weather 
 http://petfelix.herokuapp.com/
 
 #todo:
-
+* Improve speech recognition (misc on homepage) 
 * Feed Tom: Create a new function to feed Tom (https://codepen.io/deepakkadarivel/pen/LrGEdL) 
 * Enable: Painting with Tome
 * Send the regco to the backend for NLP

@@ -337,3 +337,17 @@ body {
   animation-duration: 19s;
   opacity: 0.3;
 }
+
+.microphone{
+  width: 25px;
+  height: 25px;
+  left: 90%;
+  bottom: 30px;
+  animation-delay: -10.5s;
+  animation-duration: 19s;
+  opacity: 0.3;
+
+}
+.microphone img {
+    width: 100%;
+}

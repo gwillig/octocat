@@ -1,6 +1,14 @@
+.confidence_reg{
+    position: absolute;
+    color: #52c052;
+    font-size: 5em;
+    top: 0px;
+    z-index: 100;
+
+}
 
 .speech_reco{
-    color:#52c052;
+
     font-size:5em;
     position: absolute;
     bottom: 0px;

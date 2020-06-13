@@ -19,7 +19,8 @@ from . import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('home/<name_person>', views.home, name='home'),
+    path('home', views.home, name='home'),
+    path('person/<name_person>', views.get_person, name='home'),
     path('weather', views.get_weather, name='get_Weather'),
     path('reco', views.reco, name='get_reco'),
     path('audio', views.audio, name='get_reco'),

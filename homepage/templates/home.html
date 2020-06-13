@@ -21,7 +21,7 @@
   <div class="bubble bubble--10"></div>
   <div class="bubble bubble--11"></div>
   <div class="bubble bubble--12"></div>
-  <div id="octocat" class="normal_cat" onclick="greeting_visitor()"></div>
+  <div id="octocat" class="normal_cat" onclick="//greeting_visitor()"></div>
   <div id="speech">
    <span></span>
   </div>
@@ -36,8 +36,8 @@
    <button class="learning">
       <img onclick="speak_msg('Zeit zu lernen',forwarding_learning)" src="{% static 'css/learning.png' %}">
    </button>
-   <button class="learning">
-      <img onclick="speak_msg('Zeit zu lernen',forwarding_learning)" src="{% static 'css/microphone.png' %}">
+   <button class="learning microphone">
+      <img onclick="tom_reaction()" src="{% static 'css/microphone.png' %}">
    </button>
  </div>
 </div>
@@ -47,6 +47,7 @@
          person_name = "{{name_person}}";
 </script>
 <script src="{% static 'js/octo.js' %}"></script>
+<script src="{% static 'js/audio.js' %}"></script>
 
 </html>
 

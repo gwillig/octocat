@@ -6,25 +6,165 @@ function forwarding_learning(){
     let new_address = window.location.href.split("/home")[0]+"/audio"
     window.location.href = new_address;
 }
-function speak_msg(msg_to_speak,callback){
-   /*
-   let the cat say some words
-   */
-    var msg = new SpeechSynthesisUtterance('meow meow');
-        msg.volume = 1
-        msg.rate = 1.5
-        msg.pitch = 2
-        msg.lang = 'de-D'
-        window.speechSynthesis.speak(msg);
-    var msg = new SpeechSynthesisUtterance(msg_to_speak);
-        msg.volume = 1
-        msg.rate = 1.0
-        msg.pitch = 2
-        msg.lang = 'de-D'
-    window.speechSynthesis.speak(msg);
-    callback();
+
+
+
+//==================================================================================00
+async function speak_msg(msg_to_speak,cat_img,callback){
+    return new Promise((resolve, reject) => {
+    var synth = window.speechSynthesis;
+    document.querySelector("#octocat").classList.remove("normal_cat")
+    document.querySelector("#octocat").classList.add("sm_cat")
+    let speech_bubble = document.querySelector("#speech");
+    speech_bubble.classList.add(cat_img)
+    var msg1 = new SpeechSynthesisUtterance('meow meow');
+        msg1.volume = 1
+        msg1.rate = 1.5
+        msg1.pitch = 2
+        msg1.lang = 'de-D'
+    synth.speak(msg1);
+    var msg2 = new SpeechSynthesisUtterance(msg_to_speak);
+        msg2.volume = 1
+        msg2.rate = 1.0
+        msg2.pitch = 2
+        msg2.lang = 'de-D'
+
+    synth.speak(msg2);
+    msg2.addEventListener('end', function (e) {
+        document.querySelector("#octocat").classList.add("normal_cat");
+        document.querySelector("#octocat").classList.remove("sm_cat");
+        speech_bubble.querySelector("span").innerHTML="";
+        speech_bubble.classList=""
+        resolve()
+        if (callback !== undefined) {
+            callback()
+
+        }
+    }, {once: true});
+  })};
+function reco_word_2(reco_word) {
+  return new Promise((resolve, reject) => {
+    beep(100, 450, 200)
+    window.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+
+    var recognition = new SpeechRecognition(),
+        heardOutput = document.querySelector('.heard-output'),
+        confidenceOutput = document.querySelector('.confidence-output')
+     //Start speech recognition
+     recognition.lang="de-DE"
+     window.SpeechRecognition.lang ="de-DE"
+
+    recognition.start();
+
+    //Listen for when the user finishes talking
+    let transcript,confidence
+   recognition.addEventListener('result',function(e) {
+
+        //Get transcript of user speech & confidence percentage
+         transcript = e.results[0][0].transcript.toLowerCase()
+         confidence = (e.results[0][0].confidence * 100).toFixed(1);
+        //Convert transcript string to array
+        transcript_array = transcript.split(" ");
+         //Get the last word
+         name_person = transcript_array[transcript_array.length-1]
+         // Shows the reco words and confidence percentage on the screen
+         heardOutput.textContent = `Heard: ${name_person}`;
+        confidenceOutput.textContent = `Confidence: ${confidence}%`;
+        beep(100, 450, 200)
+        if(reco_word.some(el => transcript_array.includes(el)))
+        {
+            console.log("word erkannt")
+            condition_is_true=true
+            resolve()
+        }
+        else{
+        console.log("Name false")
+            condition_is_true=false
+            resolve()
+        }
+    }, {once: true})
+})}
+function reco_name_2() {
+  return new Promise((resolve, reject) => {
+    beep(100, 450, 200)
+    window.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+
+    var recognition = new SpeechRecognition(),
+        heardOutput = document.querySelector('.heard-output'),
+        confidenceOutput = document.querySelector('.confidence-output')
+     //Start speech recognition
+     recognition.lang="de-DE"
+     window.SpeechRecognition.lang ="de-DE"
+
+    recognition.start();
+
+    //Listen for when the user finishes talking
+    let transcript,confidence
+   recognition.addEventListener('result',function(e) {
+
+        //Get transcript of user speech & confidence percentage
+         transcript = e.results[0][0].transcript.toLowerCase()
+         confidence = (e.results[0][0].confidence * 100).toFixed(1);
+        //Convert transcript string to array
+        transcript_array = transcript.split(" ");
+         //Get the last word
+         name_person = transcript_array[transcript_array.length-1]
+         // Shows the reco words and confidence percentage on the screen
+         heardOutput.textContent = `Heard: ${name_person}`;
+        confidenceOutput.textContent = `Confidence: ${confidence}%`;
+        beep(100, 450, 200)
+        resolve(name_person);
+    }, {once: true});
+})}
+
+function ask_name(msg_1){
+    /*
+    Asks a person for his name. If person conforms that name is correct it tests if person is
+    in db. If person is in db Tom greets the person
+    */
+condition_is_true=false;
+let name_person_global=""
+speak_msg(msg_1,"speech_hi")
+.then(reco_name_2)
+.then(name_person=>{
+                    let name_person_global=name_person;
+                    speak_msg(`Heißst du ${name_person}`,"speech_hi");
+                    })
+.then(result=>reco_word_2(["ja"]))
+.then(result=>{
+    if(condition_is_true==true){
+        fetch("/person/${name_person}").then(response => response.json())
+             .then(data =>{
+                if(data.name_person=="unkown"){
+
+                    speak_msg(`Schön dich kennzulernen ${name_person_global}`,"speech_hi");
+                    greeting=1
+                }
+                else{
+                    speak_msg(`Schön dich wiederzusehen ${name_person_global}`,"speech_heart");
+                    greeting=1
+                }
+             } );
+
+    }
+    else
+    {
+     ask_name("wie heißt du?")
+    }
+
+
+})
+
 }
 
+function tom_reaction(){
+
+    if (greeting==0) {
+        ask_name("Mein Name ist Tom wie heißt du?")
+
+    }
+
+}
 function greeting_visitor(){
     /*
     Function to greet the visitor. After the first click he will not longer introduce himself
@@ -48,7 +188,6 @@ function greeting_visitor(){
             msg.rate = 1.0
             msg.pitch = 2
             msg.lang = 'de-D'
-        window.speechSynthesis.speak(msg);
         greeting=3
         time_show_msg = 2000
 
@@ -579,3 +718,53 @@ function speech_recog(function_output){
 
     }
 
+/*
+//====================================================
+greeting=0
+let condition_is_true=false;
+function speak_msg_without1(msg_to_speak) {
+  return new Promise((resolve, reject) => {
+
+      var synth = window.speechSynthesis;
+    document.querySelector("#octocat").classList.remove("normal_cat")
+    document.querySelector("#octocat").classList.add("sm_cat")
+    let speech_bubble = document.querySelector("#speech");
+    if (greeting==0) {
+    speech_bubble.classList.add("speech_hi")
+    var msg1 = new SpeechSynthesisUtterance('meow meow');
+        msg1.volume = 1
+        msg1.rate = 1.5
+        msg1.pitch = 2
+        msg1.lang = 'de-D'
+    synth.speak(msg1);
+    var msg2 = new SpeechSynthesisUtterance('mein Name ist Tom. Wie heißt du?');
+        msg2.volume = 1
+        msg2.rate = 1.0
+        msg2.pitch = 2
+        msg2.lang = 'de-D'
+    greeting=3
+
+    }else{
+      var msg1 = new SpeechSynthesisUtterance('meow meow');
+        msg1.volume = 1
+        msg1.rate = 1.5
+        msg1.pitch = 2
+        msg1.lang = 'de-D'
+    synth.speak(msg1);
+    var msg2 = new SpeechSynthesisUtterance(msg_to_speak);
+        msg2.volume = 1
+        msg2.rate = 1.0
+        msg2.pitch = 2
+        msg2.lang = 'de-D'
+    }
+    synth.speak(msg2);
+    msg2.addEventListener('end', function (e) {
+        document.querySelector("#octocat").classList.add("normal_cat");
+        document.querySelector("#octocat").classList.remove("sm_cat");
+        speech_bubble.querySelector("span").innerHTML="";
+        speech_bubble.classList=""
+        resolve("ok");
+    }, {once: true});
+  });
+}
+*/

@@ -9,7 +9,7 @@ import json
 import wave
 import librosa
 import pandas as pd
-from homepage.models import Memory
+from homepage.models import Memory, Person
 from django.views.decorators.csrf import csrf_exempt
 from django.utils.decorators import method_decorator
 from sklearn.naive_bayes import GaussianNB
@@ -30,6 +30,18 @@ def get_mfcc_feature(data):
     mfcc_features = librosa.feature.mfcc(y=x, sr=fs)
 
     return mfcc_features
+
+
+def get_person(request,name_person):
+
+    count = Person.objects.filter(first_name=name_person).count()
+    if count==0:
+        p1 = Person(first_name=name_person)
+        p1.save()
+        return JsonResponse({"name_person": "unkown"})
+
+    else:
+        return JsonResponse({"name_person": "kown"})
 
 
 @method_decorator(csrf_exempt, name='post')
@@ -80,9 +92,8 @@ def classify_audio(request):
     return JsonResponse({"prediction": d_sorted})
 
 
-def home(request,name_person ):
-    print(name_person)
-    return render(request, 'home.html',{"name_person":name_person})
+def home(request ):
+    return render(request, 'home.html')
 
 @method_decorator(csrf_exempt, name='post')
 def recorded_audio(request):

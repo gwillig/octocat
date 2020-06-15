@@ -1,5 +1,5 @@
 from django.db import models
-
+from django.utils import timezone
 # Create your models here.
 
 class Person(models.Model):
@@ -25,8 +25,11 @@ class Memory(models.Model):
 
 class Raw_Conversation(models.Model):
     id = models.AutoField(primary_key=True)
-    person = models.CharField(max_length=60, blank=True, null=True)
-    person_response = models.CharField(max_length=100, blank=True, null=True)
-    person_response = models.CharField(max_length=100, blank=True, null=True)
-    date = models.TimeField(auto_now=True)
+    person_name = models.CharField(max_length=60, blank=True, null=True)
+    person_statement = models.CharField(max_length=100, blank=True, null=True)
+    chatbot_response = models.CharField(max_length=100, blank=True, null=True)
+    person_statement_date = models.DateTimeField( default=timezone.now())
     note = models.CharField(max_length=300, blank=True, null=True)
+
+    def __str__(self):
+        return (f"{self.person_name}_{self.person_statement_date}")

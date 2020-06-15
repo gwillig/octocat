@@ -10,7 +10,7 @@ import json
 import wave
 import librosa
 import pandas as pd
-from homepage.models import Memory, Person
+from homepage.models import Memory, Person, Raw_Conversation
 from django.views.decorators.csrf import csrf_exempt
 from django.utils.decorators import method_decorator
 from sklearn.naive_bayes import GaussianNB
@@ -150,8 +150,14 @@ def get_weather(request):
     return JsonResponse(req_json)
 
 
-def chatbot_answer(request,answer):
-    chatbot_response = chatbot.get_response(answer)
+def chatbot_answer(request,name_person_global,person_statement):
+    '#1.Step: The the question'
+    chatbot_response = chatbot.get_response(person_statement)
+    '#2.Step: Save conversation for training'
+    rc = Raw_Conversation(person_name=name_person_global,person_statement=person_statement,
+                          chatbot_response=chatbot_response)
+    rc.save()
+
     return JsonResponse({"chatbot_response":str(chatbot_response)})
 
 # Get example audio file

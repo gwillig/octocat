@@ -172,7 +172,7 @@ function chatbot_response() {
         if(ua.includes("Mobile")!=true){
             beep(100, 450, 200)
         }
-        fetch(`/chatbot_answer/${transcript}`).then(response => response.json())
+        fetch(`/chatbot_answer/${name_person_global}/${transcript}`).then(response => response.json())
              .then(data =>{speak_msg(data.chatbot_response,"speech_hi")})
     }, {once: true});
 })}

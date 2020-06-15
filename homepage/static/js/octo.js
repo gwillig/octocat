@@ -123,7 +123,7 @@ function ask_name(msg_1){
     in db. If person is in db Tom greets the person
     */
 condition_is_true=false;
-let name_person_global=""
+name_person_global=""
 speak_msg(msg_1,"speech_hi")
 .then(reco_name_2)
 .then(name_person=>{

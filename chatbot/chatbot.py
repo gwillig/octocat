@@ -21,6 +21,7 @@ def create_chatbot():
         "Ich mag Fisch",
         "Wer ist Svenja?",
         "Svenja ist 1.70 m groß und eine toller Sportlerin mit gruenen Augen. Sie ist soooo toll",
+
     ]
     trainer = ListTrainer(chatbot)
     trainer.train(conversation)
@@ -28,6 +29,7 @@ def create_chatbot():
     # Training with English Corpus Data
     trainer_corpus = ChatterBotCorpusTrainer(chatbot)
     trainer_corpus.train(
-        'chatbot.diverse'
+        'chatbot.diverse',
+        'chatbot.personen'
     )
     return chatbot

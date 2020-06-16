@@ -33,3 +33,37 @@ class Raw_Conversation(models.Model):
 
     def __str__(self):
         return (f"{self.person_name}_{self.person_statement_date}")
+
+
+
+class Statement(models.Model):
+    text = models.CharField(max_length=255, blank=True, null=True)
+    search_text = models.CharField(max_length=255)
+    conversation = models.CharField(max_length=32)
+    created_at = models.DateTimeField(blank=True, null=True)
+    in_response_to = models.CharField(max_length=255, blank=True, null=True)
+    search_in_response_to = models.CharField(max_length=255)
+    persona = models.CharField(max_length=50)
+
+    class Meta:
+        managed = False
+        db_table = 'statement'
+
+    def __str__(self):
+        return (f"{self.text}_{self.in_response_to}__{self.created_at}")
+
+class Tag(models.Model):
+    name = models.CharField(unique=True, max_length=50, blank=True, null=True)
+
+    class Meta:
+        managed = False
+        db_table = 'tag'
+
+
+class TagAssociation(models.Model):
+    tag = models.ForeignKey(Tag, models.DO_NOTHING, blank=True, null=True)
+    statement = models.ForeignKey(Statement, models.DO_NOTHING, blank=True, null=True)
+
+    class Meta:
+        managed = False
+        db_table = 'tag_association'

@@ -27,5 +27,6 @@ urlpatterns = [
     path('chatbot_answer/<name_person_global>/<person_statement>', views.chatbot_answer, name='chatbot_answer'),
     path('classify_audio', views.classify_audio, name='classify_audio'),
     path('recorded_audio', views.recorded_audio, name='get_reco'),
+    path("train_chatbot/<person_statement>/<optional_answer_chatbot>", views.train_chatbot, name="train_chatbot"),
 
 ]

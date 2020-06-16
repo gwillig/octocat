@@ -1,20 +1,38 @@
 from chatterbot import ChatBot
 from chatterbot.trainers import ListTrainer
 from chatterbot.trainers import ChatterBotCorpusTrainer
+import json
+
 
 def create_chatbot():
+    try:
+        with open('env.json', 'r') as env_file:
+            env_dict = json.load(env_file)
+            database_path = env_dict["database_path"]
+    except FileNotFoundError:
+        with open('env.json', 'r') as env_file:
+            env_dict = json.load(env_file)
+            database_path = env_dict["database_path"]
     # Creating ChatBot Instance
     chatbot = ChatBot(
         'Tom',
         storage_adapter='chatterbot.storage.SQLStorageAdapter',
-        database_uri='sqlite:///database.sqlite3'
+        database_uri=database_path
     )
+
+    return chatbot
+
+def train_chatbot(chatbot):
      # Training with Personal Ques & Ans
     conversation = [
         "Hallo",
         "Hallöchen!",
         "Wie geht es dir?",
-        "Mir geht es sehr gut, man könnte das Wasser mal wieder wechseln",
+        "Mir geht es sehr gut, wie geht es dir?",
+        "Mir geht es auch gut",
+        "Das ist schön zu hören"
+        "Mir geht es schlecht",
+        "Oh was ist passiert?"
         "Was mcahst du gerade so?",
         "Ich hänge hier etwas ab",
         "Was ist dein Lieblingsessen?",

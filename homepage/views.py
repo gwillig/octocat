@@ -14,6 +14,7 @@ from homepage.models import Memory, Person, Raw_Conversation
 from django.views.decorators.csrf import csrf_exempt
 from django.utils.decorators import method_decorator
 from sklearn.naive_bayes import GaussianNB
+from chatterbot.trainers import ListTrainer
 url ="https://samples.openweathermap.org/data/2.5/weather?q=Eberstadt,%20DE&appid=b6907d289e10d714a6e88b30761fae22"
 import sys
 np.set_printoptions(threshold=sys.maxsize)
@@ -159,6 +160,14 @@ def chatbot_answer(request,name_person_global,person_statement):
     rc.save()
 
     return JsonResponse({"chatbot_response":str(chatbot_response)})
+
+
+def train_chatbot(request,optional_answer_chatbot,person_statement):
+
+    trainer = ListTrainer(chatbot)
+    trainer.train([person_statement,optional_answer_chatbot])
+    return JsonResponse({"successful_trained": f"person_statement: {person_statement},"+
+                                                f"optional_answer_chatbot:{optional_answer_chatbot}"})
 
 # Get example audio file
 def get_mfcc_feature_data(data):

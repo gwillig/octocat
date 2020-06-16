@@ -127,13 +127,13 @@ name_person_global=""
 speak_msg(msg_1,"speech_hi")
 .then(reco_name_2)
 .then(name_person=>{
-                    let name_person_global=name_person;
+                    name_person_global = name_person;
                     speak_msg(`Heißst du ${name_person}`,"speech_hi");
                     })
 .then(result=>reco_word_2(["ja"]))
 .then(result=>{
     if(condition_is_true==true){
-        fetch("/person/${name_person}").then(response => response.json())
+        fetch(`/person/${name_person_global}`).then(response => response.json())
              .then(data =>{
                 if(data.name_person=="unkown"){
 

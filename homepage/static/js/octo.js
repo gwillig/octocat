@@ -44,7 +44,12 @@ async function speak_msg(msg_to_speak,cat_img,callback){
   })};
 function reco_word_2(reco_word) {
   return new Promise((resolve, reject) => {
-    beep(100, 450, 200)
+    //Test if mobile, if not make a beep
+    let ua = navigator.userAgent;
+    if(ua.includes("Mobile")!=false){
+        beep(100, 450, 200)
+    }
+
     window.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
 
     var recognition = new SpeechRecognition(),
@@ -70,7 +75,9 @@ function reco_word_2(reco_word) {
          // Shows the reco words and confidence percentage on the screen
          heardOutput.textContent = `Heard: ${name_person}`;
         confidenceOutput.textContent = `Confidence: ${confidence}%`;
-        beep(100, 450, 200)
+        if(ua.includes("Mobile")!=false){
+            beep(100, 450, 200)
+        }
         if(reco_word.some(el => transcript_array.includes(el)))
         {
             console.log("word erkannt")
@@ -86,7 +93,9 @@ function reco_word_2(reco_word) {
 })}
 function reco_name_2() {
   return new Promise((resolve, reject) => {
-    beep(100, 450, 200)
+    if(ua.includes("Mobile")!=false){
+        beep(100, 450, 200)
+    }
     window.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
 
     var recognition = new SpeechRecognition(),
@@ -112,7 +121,9 @@ function reco_name_2() {
          // Shows the reco words and confidence percentage on the screen
          heardOutput.textContent = `Heard: ${name_person}`;
         confidenceOutput.textContent = `Confidence: ${confidence}%`;
-        beep(100, 450, 200)
+        if(ua.includes("Mobile")!=false){
+            beep(100, 450, 200)
+        }
         resolve(name_person);
     }, {once: true});
 })}

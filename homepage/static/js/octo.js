@@ -1,4 +1,5 @@
-
+// for time_to_learn
+var phrase_reco=false;
 // Greeting is a global variable and ensure that the greeting only happen once
  var greeting = 0;
  // name_person_global is a global variable and ensure that the greeting only happen once
@@ -182,7 +183,7 @@ function chatbot_response(send_db=false) {
         }
     }, {once: true});
 })}
-function time_to_learn(){
+function time_to_learn_old(){
     /*
     Asks a person for his name. If person conforms that name is correct it tests if person is
     in db. If person is in db Tom greets the person
@@ -223,11 +224,8 @@ speak_msg("Zeit zu lernen","speech_hi")
 }
 
 
-phrase_reco=false
-function time_to_learn1(msg1){
 
-
-
+function time_to_learn(msg1){
     condition_is_true=false;
     //1.Step: Octocat says that it is time to study
     speak_msg(msg1,"speech_hi")
@@ -251,13 +249,15 @@ function time_to_learn1(msg1){
         }).then(result=>reco_word_2(["ja"])).then( result=>{
 
               if(condition_is_true==true)
-                speak_msg("Gut ich habe verstanden","speech_hi")
+              {
+              speak_msg("Gut ich habe verstanden","speech_hi")
 
-               fetch(`/train_chatbot/${phrase}/${phrase_meaning}`).then(response => response.json())
-               .then(console.log(response))
-
+               fetch(`/train_chatbot/${phrase}/${phrase_meaning}`)
+               .then(response => response.json())
+               .then(response=>console.log(response))
+              }
               else{
-                time_to_learn1("Was wolltest du sagen?")
+                time_to_learn("Was wolltest du sagen?")
                 phrase_reco=true;
               }
 

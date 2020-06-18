@@ -246,7 +246,7 @@ function time_to_learn(msg1){
         //2.Step: Ocotocat waits for input
         .then(response =>chatbot_response(true))
         .then(transcript =>{phrase_meaning=transcript;condition_is_true=false;speak_msg(`Sagtest du ${transcript}`,"speech_hi")
-        }).then(result=>reco_word_2(["ja"])).then( result=>{
+        }).then(result=>reco_word_2(["ja","jep"])).then( result=>{
 
               if(condition_is_true==true)
               {

@@ -46,7 +46,7 @@ function reco_word_2(reco_word) {
   return new Promise((resolve, reject) => {
     //Test if mobile, if not make a beep
     let ua = navigator.userAgent;
-    if(ua.includes("Mobile")!=false){
+    if(ua.includes("Mobile")!=true){
         beep(100, 450, 200)
     }
 
@@ -75,7 +75,9 @@ function reco_word_2(reco_word) {
          // Shows the reco words and confidence percentage on the screen
          heardOutput.textContent = `Heard: ${name_person}`;
         confidenceOutput.textContent = `Confidence: ${confidence}%`;
-        if(ua.includes("Mobile")!=false){
+        //Test if mobile, if not make a beep
+        let ua = navigator.userAgent;
+        if(ua.includes("Mobile")!=true){
             beep(100, 450, 200)
         }
         if(reco_word.some(el => transcript_array.includes(el)))
@@ -93,7 +95,9 @@ function reco_word_2(reco_word) {
 })}
 function reco_name_2() {
   return new Promise((resolve, reject) => {
-    if(ua.includes("Mobile")!=false){
+    //Test if mobile, if not make a beep
+    let ua = navigator.userAgent;
+    if(ua.includes("Mobile")!=true){
         beep(100, 450, 200)
     }
     window.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
@@ -121,7 +125,9 @@ function reco_name_2() {
          // Shows the reco words and confidence percentage on the screen
          heardOutput.textContent = `Heard: ${name_person}`;
         confidenceOutput.textContent = `Confidence: ${confidence}%`;
-        if(ua.includes("Mobile")!=false){
+        //Test if mobile, if not make a beep
+        let ua = navigator.userAgent;
+        if(ua.includes("Mobile")!=true){
             beep(100, 450, 200)
         }
         resolve(name_person);

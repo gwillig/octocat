@@ -1,5 +1,6 @@
 from django.http import Http404, JsonResponse
 from django.shortcuts import render
+from chatbot.chatbot import create_chatbot
 import pickle
 import collections
 from io import BytesIO
@@ -17,6 +18,9 @@ url ="https://samples.openweathermap.org/data/2.5/weather?q=Eberstadt,%20DE&appi
 import sys
 np.set_printoptions(threshold=sys.maxsize)
 
+#====Create cheatbot
+chatbot = create_chatbot()
+#====
 def get_mfcc_feature(data):
     """
     Converts a wave file into his mfcc features
@@ -146,9 +150,9 @@ def get_weather(request):
     return JsonResponse(req_json)
 
 
-def personal_information(request):
-    pass
-
+def chatbot_answer(request,answer):
+    chatbot_response = chatbot.get_response(answer)
+    return JsonResponse({"chatbot_response":str(chatbot_response)})
 
 # Get example audio file
 def get_mfcc_feature_data(data):

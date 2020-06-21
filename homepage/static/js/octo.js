@@ -133,7 +133,47 @@ function reco_name_2() {
         resolve(name_person);
     }, {once: true});
 })}
+function chatbot_response() {
+  return new Promise((resolve, reject) => {
+    //Test if mobile, if not make a beep
+    let ua = navigator.userAgent;
+    if(ua.includes("Mobile")!=true){
+        beep(100, 450, 200)
+    }
+    window.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
 
+    var recognition = new SpeechRecognition(),
+        heardOutput = document.querySelector('.heard-output'),
+        confidenceOutput = document.querySelector('.confidence-output')
+     //Start speech recognition
+     recognition.lang="de-DE"
+     window.SpeechRecognition.lang ="de-DE"
+
+    recognition.start();
+
+    //Listen for when the user finishes talking
+    let transcript,confidence
+   recognition.addEventListener('result',function(e) {
+
+        //Get transcript of user speech & confidence percentage
+         transcript = e.results[0][0].transcript.toLowerCase()
+         confidence = (e.results[0][0].confidence * 100).toFixed(1);
+        //Convert transcript string to array
+        transcript_array = transcript.split(" ");
+         //Get the last word
+         name_person = transcript_array[transcript_array.length-1]
+         // Shows the reco words and confidence percentage on the screen
+         heardOutput.textContent = `Heard: ${transcript}`;
+        confidenceOutput.textContent = `Confidence: ${confidence}%`;
+        //Test if mobile, if not make a beep
+        let ua = navigator.userAgent;
+        if(ua.includes("Mobile")!=true){
+            beep(100, 450, 200)
+        }
+        fetch(`/chatbot_answer/${transcript}`).then(response => response.json())
+             .then(data =>{speak_msg(data.chatbot_response,"speech_hi")})
+    }, {once: true});
+})}
 function ask_name(msg_1){
     /*
     Asks a person for his name. If person conforms that name is correct it tests if person is
@@ -178,6 +218,9 @@ function tom_reaction(){
 
     if (greeting==0) {
         ask_name("Mein Name ist Tom wie heißt du?")
+
+    }else{
+     chatbot_response()
 
     }
 

@@ -20,7 +20,7 @@ def create_chatbot():
         "Was ist dein Lieblingsessen?",
         "Ich mag Fisch"
         "Wer ist Svenja?"
-        "Svenja ist ein ehmalige Handballspielerin, welche in Eberstadt wohn"
+        "Svenja ist 1.70 m groß und eine toller Sportlerin mit gruenen Augen. Sie ist soooo toll"
     ]
 
     trainer = ListTrainer(chatbot)

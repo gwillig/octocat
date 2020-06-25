@@ -1,3 +1,4 @@
+@media screen and (max-width: 600px) {
 .confidence_reg{
     position: absolute;
     color: #52c052;
@@ -20,16 +21,11 @@
     right: 20%;
     font-size:5em;
     position: absolute;
-    bottom: 0px;
+    bottom: 10%;
     z-index: 100;
 
 }
-.present {
-    padding: 0;
-    display: none;
-    margin: 0 auto;
 
-}
 .learning {
     border: none;
     width: 200px;
@@ -41,9 +37,9 @@
 }
 
 
-
 .learning img {
-  height: 188px;;
+  height: 188px;
+
 }
 
 body {
@@ -60,14 +56,6 @@ body {
     width: 700px;
 }
 
-#age{
-    font-family:Lucida Console;
-    color:white;
-    font-size:90px;
-    position: absolute;
-    bottom: 0px;
-    padding-left: 25px;
-}
 .speech_empty span{
     top: 100px;
     font-family:Lucida Console;
@@ -139,6 +127,25 @@ body {
   margin-top: -150px;
   z-index: 100;
 }
+.ocean {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  background-image: linear-gradient(0deg, #182848, #2980b9)
+}
+
+.bubble {
+  width: 30px;
+  height: 30px;
+  border-radius: 100%;
+  position: absolute;
+  background-color: white;
+  bottom: -30px;
+  opacity: 0.2;
+  animation: bubble 15s ease-in-out infinite;
+
+}
+
 @keyframes upAndDown {
   0% {
     background-position: -1000px;
@@ -217,24 +224,7 @@ body {
     transform: translate(calc(-100vw - 300px), 0); /* Animate past left past the screen */
   }
 }
-.ocean {
-  position: relative;
-  width: 100vw;
-  height: 100vh;
-  background-image: linear-gradient(0deg, #182848, #2980b9)
-}
 
-.bubble {
-  width: 30px;
-  height: 30px;
-  border-radius: 100%;
-  position: absolute;
-  background-color: white;
-  bottom: -30px;
-  opacity: 0.2;
-  animation: bubble 15s ease-in-out infinite;
-
-}
 
 @keyframes bubble {
   0% {

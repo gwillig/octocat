@@ -18,14 +18,10 @@ def create_chatbot():
         "Was mcahst du gerade so?",
         "Ich hänge hier etwas ab",
         "Was ist dein Lieblingsessen?",
-        "Ich mag Fisch"
-<<<<<<< HEAD
-        "Wer ist Svenja?"
-        "Svenja ist 1.70 m groß und eine toller Sportlerin mit gruenen Augen. Sie ist soooo toll"
-=======
->>>>>>> e68d2783a673469bd12a5f227644164f3fb79851
+        "Ich mag Fisch",
+        "Wer ist Svenja?",
+        "Svenja ist 1.70 m groß und eine toller Sportlerin mit gruenen Augen. Sie ist soooo toll",
     ]
-
     trainer = ListTrainer(chatbot)
     trainer.train(conversation)
 

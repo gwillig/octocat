@@ -17,7 +17,8 @@ def create_chatbot():
     chatbot = ChatBot(
         'Tom',
         storage_adapter='chatterbot.storage.SQLStorageAdapter',
-        database_uri=database_path,
+        database_uri='sqlite:///database.db',
+        # database_uri=database_path,
         logic_adapters=[
         'chatterbot.logic.BestMatch'
     ]

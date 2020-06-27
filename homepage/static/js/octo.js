@@ -1,5 +1,6 @@
 // for time_to_learn
 var phrase_reco=false;
+var phrase_meaning="";
 // Greeting is a global variable and ensure that the greeting only happen once
  var greeting = 0;
  // name_person_global is a global variable and ensure that the greeting only happen once
@@ -136,7 +137,7 @@ function reco_name_2() {
         resolve(name_person);
     }, {once: true});
 })}
-function chatbot_response(send_db=false) {
+function chatbot_response(send_db=true) {
   return new Promise((resolve, reject) => {
     //Test if mobile, if not make a beep
     let ua = navigator.userAgent;
@@ -173,9 +174,23 @@ function chatbot_response(send_db=false) {
         if(ua.includes("Mobile")!=true){
             beep(100, 450, 200)
         }
-        if(send_db==false){
+        if(send_db==true){
            fetch(`/chatbot_answer/${name_person_global}/${transcript}`).then(response => response.json())
              .then(data =>{speak_msg(data.chatbot_response,"speech_hi")})
+             .then(dummy =>{condition_is_true=false;speak_msg("War das richtig?","speech_hi")
+                 }).then(result=>reco_word_2(["ja","jep"])).then( result=>{
+
+              if(condition_is_true==true)
+              {
+              speak_msg("Gut ich habe verstanden","speech_hi")
+                return
+              }
+              else{
+                time_to_learn("Oh was hast du nochmal gesagt und kannst du mir das nochmal erklären")
+              }
+
+
+        })
             resolve()
         }
         else{
@@ -191,7 +206,7 @@ function time_to_learn_old(){
 condition_is_true=false;
 
 speak_msg("Zeit zu lernen","speech_hi")
-.then(response =>chatbot_response(true))
+.then(response =>chatbot_response(false))
 .then(name_person=>{
                     name_person_global = name_person;
                     speak_msg(`Heißst du ${name_person}`,"speech_hi");
@@ -230,7 +245,7 @@ function time_to_learn(msg1){
     //1.Step: Octocat says that it is time to study
     speak_msg(msg1,"speech_hi")
     //2.Step: Ocotocat waits for input
-    .then(response =>chatbot_response(true))
+    .then(response =>chatbot_response(false))
     .then(transcript =>{phrase=transcript;speak_msg(`Sagtest du ${transcript}`,"speech_hi")})
     //3.Step: Check if the the recognistion was right
     .then(result=>reco_word_2(["ja"]))
@@ -238,13 +253,16 @@ function time_to_learn(msg1){
         if( phrase_reco==true){
             speak_msg("Gut ich habe verstanden","speech_hi")
             phrase_reco=false;
+            fetch(`/train_chatbot/${phrase}/${phrase_meaning}`)
+               .then(response => response.json())
+               .then(response=>console.log(response))
             return
         }
          if(condition_is_true==true){
 
         speak_msg("Was heißst das?","speech_hi")
         //2.Step: Ocotocat waits for input
-        .then(response =>chatbot_response(true))
+        .then(response =>chatbot_response(false))
         .then(transcript =>{phrase_meaning=transcript;condition_is_true=false;speak_msg(`Sagtest du ${transcript}`,"speech_hi")
         }).then(result=>reco_word_2(["ja","jep"])).then( result=>{
 
@@ -265,7 +283,7 @@ function time_to_learn(msg1){
         })
          }
          else{
-                time_to_learn1("Was wolltest du sagen?")
+                time_to_learn("Was wolltest du sagen?")
                }
 
 
@@ -327,7 +345,8 @@ function tom_reaction(){
         ask_name("Mein Name ist Tom wie heißt du?")
 
     }else{
-     chatbot_response()
+    speak_msg("Was moechtest du wissen?","speech_hi").then(chatbot_response)
+
 
     }
 

@@ -4,6 +4,7 @@
 <!-- https://dev.to/codypearce/animate-an-octocat-sprite-swimming-with-css-2apl-->
 {% load static %}
  <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1">
  <title>Hi am Felix</title>
  <link rel="stylesheet" type="text/css" href="{% static 'css/octo.css' %}">
 </head>
@@ -21,11 +22,10 @@
   <div class="bubble bubble--10"></div>
   <div class="bubble bubble--11"></div>
   <div class="bubble bubble--12"></div>
-  <div class="ocotocat_head" onclick="speak_msg('Das gefaellt mir sehr gut','speech_hi')"
-  >
-
   </div>
+ <div class="ocotocat_head" onclick="speak_msg('Das gefaellt mir sehr gut','speech_hi')">
   <div id="octocat" class="normal_cat" onclick="//greeting_visitor()"></div>
+
     <div class="confidence_reg">
     <p class="heard-output speech">Heard: Nothing</p>
     <p class="confidence-output speech ">Confidence: 100.0%</p>

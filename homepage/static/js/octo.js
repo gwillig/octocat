@@ -137,6 +137,8 @@ function reco_name_2() {
         resolve(name_person);
     }, {once: true});
 })}
+
+
 function chatbot_response(send_db=true) {
   return new Promise((resolve, reject) => {
     //Test if mobile, if not make a beep
@@ -186,7 +188,7 @@ function chatbot_response(send_db=true) {
                 return
               }
               else{
-                time_to_learn("Oh was hast du nochmal gesagt und kannst du mir das nochmal erklären")
+                time_to_learn("Oh was hast du nochmal gesagt und wie sollte ich darauf am Besten antworten")
               }
 
 
@@ -201,7 +203,7 @@ function chatbot_response(send_db=true) {
 function time_to_learn_old(){
     /*
     Asks a person for his name. If person conforms that name is correct it tests if person is
-    in db. If person is in db Tom greets the person
+    in db. If person is in db Felix greets the person
     */
 condition_is_true=false;
 
@@ -260,7 +262,7 @@ function time_to_learn(msg1){
         }
          if(condition_is_true==true){
 
-        speak_msg("Was heißst das?","speech_hi")
+        speak_msg("wie sollte ich darauf am Besten antworten","speech_hi")
         //2.Step: Ocotocat waits for input
         .then(response =>chatbot_response(false))
         .then(transcript =>{phrase_meaning=transcript;condition_is_true=false;speak_msg(`Sagtest du ${transcript}`,"speech_hi")
@@ -302,7 +304,7 @@ function time_to_learn(msg1){
 function ask_name(msg_1){
     /*
     Asks a person for his name. If person conforms that name is correct it tests if person is
-    in db. If person is in db Tom greets the person
+    in db. If person is in db Felix greets the person
     */
 condition_is_true=false;
 
@@ -342,7 +344,7 @@ speak_msg(msg_1,"speech_hi")
 function tom_reaction(){
 
     if (greeting==0) {
-        ask_name("Mein Name ist Tom wie heißt du?")
+        ask_name("Mein Name ist Felix wie heißt du?")
 
     }else{
     speak_msg("Was moechtest du wissen?","speech_hi").then(chatbot_response)
@@ -369,7 +371,7 @@ function greeting_visitor(){
             msg.pitch = 2
             msg.lang = 'de-D'
         window.speechSynthesis.speak(msg);
-        var msg = new SpeechSynthesisUtterance('mein Name ist Tom. Wie heißt du?');
+        var msg = new SpeechSynthesisUtterance('mein Name ist Felix. Wie heißt du?');
             msg.volume = 1
             msg.rate = 1.0
             msg.pitch = 2
@@ -536,7 +538,7 @@ function say_name_visitor(reco_msg){
             msg.pitch = 2
             msg.lang = 'de-D'
         window.speechSynthesis.speak(msg);
-        var msg = new SpeechSynthesisUtterance('mein Name ist Tom. Wie heißt du?');
+        var msg = new SpeechSynthesisUtterance('mein Name ist Felix. Wie heißt du?');
             msg.volume = 1
             msg.rate = 1.0
             msg.pitch = 2
@@ -793,7 +795,7 @@ function talking_cat1(msg,reco_string){
             msg.pitch = 2
             msg.lang = 'de-D'
         window.speechSynthesis.speak(msg);
-        var msg = new SpeechSynthesisUtterance('mein Name ist Tom');
+        var msg = new SpeechSynthesisUtterance('mein Name ist Felix');
             msg.volume = 1
             msg.rate = 1.0
             msg.pitch = 2
@@ -923,7 +925,7 @@ function speak_msg_without1(msg_to_speak) {
         msg1.pitch = 2
         msg1.lang = 'de-D'
     synth.speak(msg1);
-    var msg2 = new SpeechSynthesisUtterance('mein Name ist Tom. Wie heißt du?');
+    var msg2 = new SpeechSynthesisUtterance('mein Name ist Felix. Wie heißt du?');
         msg2.volume = 1
         msg2.rate = 1.0
         msg2.pitch = 2

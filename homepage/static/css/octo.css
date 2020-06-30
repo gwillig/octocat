@@ -7,6 +7,16 @@
 
 }
 
+.ocotocat_head{
+    left: 20%;
+    z-index: 10000;
+    height: 200px;
+    width: 600px;
+    background-color: aliceblue;
+    top: 30%;
+    position: absolute;
+}
+
 .speech_reco{
     right: 20%;
     font-size:5em;

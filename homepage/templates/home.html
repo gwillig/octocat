@@ -21,6 +21,10 @@
   <div class="bubble bubble--10"></div>
   <div class="bubble bubble--11"></div>
   <div class="bubble bubble--12"></div>
+  <div class="ocotocat_head" onclick="speak_msg('Das gefaellt mir sehr gut','speech_hi')"
+  >
+
+  </div>
   <div id="octocat" class="normal_cat" onclick="//greeting_visitor()"></div>
   <div id="speech">
    <span></span>
@@ -34,7 +38,7 @@
  </div>
  <div class="speech_reco">
    <button class="learning">
-      <img onclick='time_to_learn("Zeit zu lernen")' src="{% static 'css/learning.png' %}">
+      <img onclick='time_to_learn("Welches Statement moechtest du mir beibringen? Und wie antworte ich darauf am besten?")' src="{% static 'css/learning.png' %}">
    </button>
    <button class="learning microphone">
       <img onclick="tom_reaction()" src="{% static 'css/microphone.png' %}">

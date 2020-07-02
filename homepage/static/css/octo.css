@@ -12,7 +12,6 @@
     z-index: 10000;
     height: 200px;
     width: 600px;
-    background-color: aliceblue;
     top: 30%;
     position: absolute;
 }
@@ -36,7 +35,7 @@
     width: 200px;
     height: 200px;
     margin-left: 120px;
-
+    background: #a6b7cc;
     border-radius: 40px;
     transition-duration: 0.4s;
 }

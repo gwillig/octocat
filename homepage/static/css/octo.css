@@ -1,85 +1,15 @@
-    .confidence_reg p{
-        margin-top: 5px;
-        margin-bottom: 0px;
-        margin-left: 30px;
-    }
-
-    .speech_reco{
-        font-size:5em;
-        position: absolute;
-        bottom: 1px;
-        z-index: 100;
-        left: 80px;
-    }
-@media (max-width: 600px) {
-
-    .speech_reco{
-        bottom: -165px;
-    }
-    .speech_hi{
-        top: 0px;
-    }
-
-
-
-    #cat_frame{
-        left:0%;
-        z-index: 10000;
-        height: 350px;
-        width: 300px;
-        top: 0%;
-        position: absolute;
-    }
-
-    .ocotocat_head{
-        left: 10%;
-        z-index: 10000;
-        height: 150px;
-        width: 80%;
-        top: 30%;
-        position: absolute;
-    }
-
-    #ocean_ground{
-        visibility:hidden;
-    }
-
+.confidence_reg p{
+    margin-top: 5px;
+    margin-bottom: 0px;
+    margin-left: 30px;
 }
-@media (min-width: 600px) {
-    .normal_cat{
-        width:300px;
-    }
 
-    #cat_frame{
-        left:35%;
-        z-index: 10000;
-        height: 200px;
-        width: 600px;
-        top: 30%;
-        position: absolute;
-    }
-
-    .speech_reco{
-        bottom: -350px;
-    }
-    .ocotocat_head{
-        left: 10%;
-        z-index: 10000;
-        height: 150px;
-        width: 80%;
-        top: 30%;
-        position: absolute;
-    }
-    #ocean_ground{
-        position:absolute;
-        bottom:0px
-    }
-
-    .speech_hi{
-        top: 30%;
-        left: 35%;
-    }
-
+.speech_reco{
+    font-size:5em;
+    position: absolute;
+    bottom: 1px;
+    z-index: 100;
+    left: 80px;
 }
 
 .normal_cat {
@@ -116,9 +46,6 @@ body,html {
 }
 
 
-
-
-
 .learning {
     border: none;
     background: #a6b7cc;
@@ -126,12 +53,10 @@ body,html {
     transition-duration: 0.4s;
 }
 
-
 .learning img {
   height: 60px;
 
 }
-
 
 .speech_hi{
     background: url(/static/css/bubble_hi.png);
@@ -195,12 +120,6 @@ body,html {
   background-size:cover;
   z-index: 100;
 }
-
-
-
-
-/* General*/
-
 
 .bubble {
   width: 30px;
@@ -411,3 +330,72 @@ body,html {
   opacity: 0.3;
 }
 
+
+@media (max-width: 600px) {
+
+    .speech_reco{
+        bottom: -165px;
+    }
+    .speech_hi{
+        top: 0px;
+    }
+
+    #cat_frame{
+        left:0%;
+        z-index: 10000;
+        height: 350px;
+        width: 300px;
+        top: 0%;
+        position: absolute;
+    }
+
+    .ocotocat_head{
+        left: 10%;
+        z-index: 10000;
+        height: 150px;
+        width: 80%;
+        top: 30%;
+        position: absolute;
+    }
+
+    #ocean_ground{
+        visibility:hidden;
+    }
+
+}
+@media (min-width: 600px) {
+    .normal_cat{
+        width:300px;
+    }
+
+    #cat_frame{
+        left:35%;
+        z-index: 10000;
+        height: 200px;
+        width: 600px;
+        top: 30%;
+        position: absolute;
+    }
+
+    .speech_reco{
+        bottom: -350px;
+    }
+    .ocotocat_head{
+        left: 10%;
+        z-index: 10000;
+        height: 150px;
+        width: 80%;
+        top: 30%;
+        position: absolute;
+    }
+    #ocean_ground{
+        position:absolute;
+        bottom:0px
+    }
+
+    .speech_hi{
+        top: 30%;
+        left: 35%;
+    }
+
+}

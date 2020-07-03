@@ -22,3 +22,5 @@ http://petfelix.herokuapp.com/
         *  What gift have you received that you will always treasure?
         *  Do you have any family traditions? If so, what?    
 https://github.com/sahil-rajput/Candice-YourPersonalChatBot/blob/master/app.py
+
+* Add plants https://codepen.io/osublake/pen/gpGEye for the desktop version

@@ -1,6 +1,7 @@
 from chatterbot import ChatBot
 from chatterbot.trainers import ListTrainer
 from chatterbot.trainers import ChatterBotCorpusTrainer
+from homepage.models import Memory, Person, Raw_Conversation
 import json
 
 
@@ -17,8 +18,8 @@ def create_chatbot():
     chatbot = ChatBot(
         'Tom',
         storage_adapter='chatterbot.storage.SQLStorageAdapter',
-        database_uri='sqlite:///database.db',
-        # database_uri=database_path,
+        # database_uri='sqlite:///database.db',
+        database_uri=database_path,
         logic_adapters=[
         'chatterbot.logic.BestMatch'
     ]
@@ -45,6 +46,7 @@ def train_chatbot(chatbot):
         "Svenja ist 1.70 m groß und eine toller Sportlerin mit gruenen Augen. Sie ist soooo toll",
 
     ]
+
     trainer = ListTrainer(chatbot)
     trainer.train(conversation)
 

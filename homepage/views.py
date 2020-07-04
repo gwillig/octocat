@@ -1,6 +1,7 @@
 from django.http import Http404, JsonResponse
 from django.shortcuts import render
 from chatbot.chatbot import create_chatbot
+import threading
 import pickle
 import collections
 from io import BytesIO
@@ -153,11 +154,13 @@ def get_weather(request):
 
 def chatbot_answer(request,name_person_global,person_statement):
     '#1.Step: The the question'
+    print("ehllo")
     chatbot_response = chatbot.get_response(person_statement)
     '#2.Step: Save conversation for training'
-    rc = Raw_Conversation(person_name=name_person_global,person_statement=person_statement,
-                          chatbot_response=chatbot_response)
-    rc.save()
+    task = threading.Thread(target=save_to_db, args=(name_person_global,person_statement,chatbot_response))
+    '#2.1.Step: Define task as deamon so that the main program can exit and the saving to db is in other thread'
+    task.daemon = True
+    task.start()
 
     return JsonResponse({"chatbot_response":str(chatbot_response)})
 
@@ -183,6 +186,21 @@ def get_mfcc_feature_data(data):
     mfcc_features = librosa.feature.mfcc(y=x, sr=fs)
 
     return mfcc_features
+
+
+def save_to_db(name_person_global,person_statement,chatbot_response):
+    """
+    functions save a dataset to the database
+    @args:
+     - name_person_global (str): e.g. "gustav"
+     - person_statement(str): e.g. "Wie heißt du?"
+     - chatbot_response (str): ich heiße Felix
+
+    """
+    rc = Raw_Conversation(person_name=name_person_global,person_statement=person_statement,
+                          chatbot_response=chatbot_response)
+    rc.save()
+
 
 def bytes_numpy(bytes_raw):
     load_bytes = BytesIO(bytes_raw)

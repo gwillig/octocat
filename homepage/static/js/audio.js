@@ -110,7 +110,7 @@ function beep(vol, freq, duration){
   u=a.createGain()
   v.connect(u)
   v.frequency.value=freq
-  v.type="sin"
+  v.type="sine"
   u.connect(a.destination)
   u.gain.value=vol*0.01
   v.start(a.currentTime)

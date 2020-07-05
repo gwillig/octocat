@@ -51,6 +51,7 @@ function reco_word_2(reco_word) {
     //Test if mobile, if not make a beep
     let ua = navigator.userAgent;
     if(ua.includes("Mobile")!=true){
+        console.log("word_erkennung")
         beep(100, 450, 200)
     }
 
@@ -239,10 +240,69 @@ speak_msg("Zeit zu lernen","speech_hi")
 })
 
 }
-
-
-
 function time_to_learn(msg1){
+    condition_is_true=false;
+    //1.Step: Octocat says that it is time to study
+    speak_msg(msg1,"speech_hi")
+    //2.Step: Ocotocat waits for input
+    .then(response =>chatbot_response(false))
+    .then(transcript =>{phrase=transcript;speak_msg(`Sagtest du ${transcript}`,"speech_hi")
+                            //3.Step: Check if the the recognistion was right
+                        .then(result=>reco_word_2(["ja"]))
+                            .then(result=>{
+                            if( phrase_reco==true){
+                                speak_msg("Gut ich habe verstanden","speech_hi")
+                                phrase_reco=false;
+                                fetch(`/train_chatbot/${phrase}/${phrase_meaning}`)
+                                   .then(response => response.json())
+                                   .then(response=>console.log(response))
+                                return
+                            }
+                             if(condition_is_true==true){
+
+                            speak_msg("wie sollte ich darauf am Besten antworten","speech_hi")
+                            //2.Step: Ocotocat waits for input
+                            .then(response =>chatbot_response(false))
+                            .then(transcript =>{phrase_meaning=transcript;condition_is_true=false;speak_msg(`Sagtest du ${transcript}`,"speech_hi")
+                            }).then(result=>reco_word_2(["ja","jep"]).then( result=>{
+
+                                  if(condition_is_true==true)
+                                  {
+                                  speak_msg("Gut ich habe verstanden","speech_hi")
+
+                                   fetch(`/train_chatbot/${phrase}/${phrase_meaning}`)
+                                   .then(response => response.json())
+                                   .then(response=>console.log(response))
+                                  }
+                                  else{
+                                    time_to_learn("Was wolltest du sagen?")
+                                    phrase_reco=true;
+                                  }
+
+
+                            }))
+                             }
+                             else{
+                                    time_to_learn("Was wolltest du sagen?")
+                                   }
+
+
+                        //2.1.Step: User provies input
+                        //2.2.Step: Ocotocat asks if it is right?
+                        //3.Step: Ocotocat asks for meaning
+                        //3.1.Step: User provivds input
+                        //3.2.Step: Ocotocat ask if it is right
+                        //4.Step: Send fetch to db
+                        //4.1.Step: Announcement that it was successfully
+                        })
+                                            }
+    )
+
+    }
+
+//time_to_learn_new("Oh was hast du nochmal gesagt und wie sollte ich darauf am Besten antworten")
+
+function time_to_learn_old1(msg1){
     condition_is_true=false;
     //1.Step: Octocat says that it is time to study
     speak_msg(msg1,"speech_hi")
@@ -306,40 +366,45 @@ function ask_name(msg_1){
     Asks a person for his name. If person conforms that name is correct it tests if person is
     in db. If person is in db Felix greets the person
     */
-condition_is_true=false;
+    condition_is_true=false;
+    //1.Step: Define a promise chain in order that octocat speak==> waits for an answer==> actocat speak ==> wait for an answer==>..
+    //1.1.Step: Octocat speaks first statement
+    speak_msg(msg_1,"speech_hi")
+     //1.1.Step: Octocat waits for an answer
+    .then(reco_name_2).then(
+        name_person=>{
+                name_person_global = name_person;
+                //1.1.1.Step: Ocotocat ask if the name is right, which triggers a new promise (promise in promise)
+                speak_msg(`Heißst du ${name_person}`,"speech_hi")
+                .then(result=>reco_word_2(["ja"])
+                    .then(result=>{
+                        if(condition_is_true==true){
+                        fetch(`/person/${name_person_global}`).then(response => response.json())
+                             .then(data =>{
+                                if(data.name_person=="unkown"){
+                                    speak_msg(`Schön dich kennzulernen ${name_person_global}`,"speech_hi");
+                                    greeting=1
+                                }
+                                else{
+                                    speak_msg(`Schön dich wiederzusehen ${name_person_global}`,"speech_heart");
+                                    greeting=1
+                                }
+                             } );
 
-speak_msg(msg_1,"speech_hi")
-.then(reco_name_2)
-.then(name_person=>{
-                    name_person_global = name_person;
-                    speak_msg(`Heißst du ${name_person}`,"speech_hi");
-                    })
-.then(result=>reco_word_2(["ja"]))
-.then(result=>{
-    if(condition_is_true==true){
-        fetch(`/person/${name_person_global}`).then(response => response.json())
-             .then(data =>{
-                if(data.name_person=="unkown"){
-
-                    speak_msg(`Schön dich kennzulernen ${name_person_global}`,"speech_hi");
-                    greeting=1
-                }
-                else{
-                    speak_msg(`Schön dich wiederzusehen ${name_person_global}`,"speech_heart");
-                    greeting=1
-                }
-             } );
-
-    }
-    else
-    {
-     ask_name("wie heißt du?")
-    }
-
-
-})
+                        }
+                        else
+                        {
+                            ask_name("wie heißt du?")
+                        }
+                        }
+    )
+                )
+            }
+        )
 
 }
+
+
 
 function tom_reaction(){
 

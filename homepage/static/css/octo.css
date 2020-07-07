@@ -94,10 +94,10 @@ body,html {
     background: url(/static/css/bubble_heart.png);
     position: absolute;
     background-repeat: no-repeat;
-    background-size: cover;
-    z-index: 1500;
-    height: 500px;
-    width: 700px;
+    background-size: 250px;
+    z-index: 15000;
+    width: 100%;
+    height: 100%;
 }
 
 .speech_empty{
@@ -332,11 +332,13 @@ body,html {
 
 
 @media (max-width: 600px) {
-
+    .speech_heart{
+        top: 0px;
+    }
     .speech_reco{
         bottom: -165px;
     }
-    .speech_hi{
+    .speech_hi,.speech_heart{
         top: 0px;
     }
 
@@ -393,7 +395,7 @@ body,html {
         bottom:0px
     }
 
-    .speech_hi{
+    .speech_hi,.speech_heart{
         top: 30%;
         left: 35%;
     }
